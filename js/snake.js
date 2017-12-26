@@ -56,18 +56,23 @@ class Snake {
     return this.bodyCollidesWith(this.head());
   }
 
-  handleWalls() {
+  loopThroughWalls() {
     if (this.head().x < 0) this.snake[0].x = GameConfig.X_TILES - 1;
     if (this.head().x >= GameConfig.X_TILES) this.snake[0].x = 0;
     if (this.head().y < 0) this.snake[0].y = GameConfig.Y_TILES - 1;
     if (this.head().y >= GameConfig.Y_TILES) this.snake[0].y = 0;
   }
 
-  eatApple(dx, dy) {
-    this.prepend(new Tile(this.head().x + dx, this.head().y + dy));
+  aboutToCollideWithWalls(dx, dy) {
+    if (this.head().x + dx < 0) return true;
+    if (this.head().x + dx >= GameConfig.X_TILES) return true;
+    if (this.head().y + dy < 0) return true;
+    if (this.head().y + dy >= GameConfig.Y_TILES) return true;
+
+    return false;
   }
 
-  toString() {
-    return this.snake.toString();
+  eatApple(dx, dy) {
+    this.prepend(new Tile(this.head().x + dx, this.head().y + dy));
   }
 }

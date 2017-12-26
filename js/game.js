@@ -75,17 +75,19 @@ class Game {
   }
 
   game() {
-    this.snake.move(this.dx, this.dy);
-    this.snake.handleWalls();
+    if (GameConfig.ENABLE_WALLS && this.snake.aboutToCollideWithWalls(this.dx, this.dy)) return this.endGame();
 
-    // Snake eating an apple
+    this.snake.move(this.dx, this.dy);
+    this.snake.loopThroughWalls();
+
+    // Snake eats an apple
     if (Tile.collides(this.snake.head(), this.apple)) {
       this.snake.eatApple(this.dx, this.dy);
       this.apple = new Apple(this.snake);
       this.score++;
     }
 
-    // Snake colliding with itself
-    if (this.snake.collidesWithItself()) this.endGame();
+    // Snake collides with itself
+    if (this.snake.collidesWithItself()) return this.endGame();
   }
 }
