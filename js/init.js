@@ -8,6 +8,6 @@ canvasHandler.draw(game);
 
 let keyboardHandler = new KeyboardHandler(game);
 
-window.setInterval(function () {
+window.setInterval(() => {
   canvasHandler.draw(game);
 }, 1000 / GameConfig.REFRESH_FPS);
