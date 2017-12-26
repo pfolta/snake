@@ -28,7 +28,7 @@ class Game {
     this.active = true;
     this.gameInterval = window.setInterval(() => {
       this.game();
-    }, 1000/10);
+    }, 1000 / GameConfig.GAME_SPEED);
   }
 
   stopGame() {

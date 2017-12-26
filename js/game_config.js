@@ -9,5 +9,6 @@ var GameConfig = {
   BACKGROUND_COLOR: "black",
   APPLE_COLOR: "red",
   SNAKE_COLOR: "lime",
+  GAME_SPEED: 15, // Use 10 for easy, 15 for normal and 25 for hard
   REFRESH_FPS: 60,
 };
