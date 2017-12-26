@@ -1,6 +1,6 @@
 class Tile {
   static collides(tileA, tileB) {
-    if (tileA.x == tileB.x && tileA.y == tileB.y) return true;
+    if (tileA.x === tileB.x && tileA.y === tileB.y) return true;
     return false;
   }
 
@@ -18,9 +18,5 @@ class Tile {
   randomize() {
     this.x = Math.floor(GameConfig.X_TILES * Math.random());
     this.y = Math.floor(GameConfig.Y_TILES * Math.random());
-  }
-
-  toString() {
-    return "(" + this.x + ", " + this.y + ")";
   }
 }
