@@ -79,7 +79,7 @@ class Snake {
     return false;
   }
 
-  eatApple(dx, dy) {
+  eatApple() {
     let tail = this.tail();
     this.append(new SnakeBody(tail.x + tail.dx, tail.y + tail.dy, tail.dx, tail.dy));
   }

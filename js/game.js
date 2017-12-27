@@ -81,7 +81,7 @@ class Game {
 
     // Snake eats an apple
     if (Tile.collides(this.snake.head(), this.apple)) {
-      this.snake.eatApple(this.dx, this.dy);
+      this.snake.eatApple();
       this.apple = new Apple(this.snake);
 
       // Update score and highscore
