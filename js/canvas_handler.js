@@ -2,6 +2,17 @@ class CanvasHandler {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     this.gc = this.canvas.getContext("2d");
+
+    this.setCanvasSize();
+
+    window.addEventListener("resize", (event) => {
+      this.setCanvasSize();
+    });
+  }
+
+  setCanvasSize() {
+    this.canvas.width = Math.floor(this.canvas.clientWidth / GameConfig.X_TILES) * GameConfig.X_TILES * 2;
+    this.canvas.height = Math.floor(this.canvas.clientHeight / GameConfig.Y_TILES) * GameConfig.Y_TILES * 2;
   }
 
   draw(game) {
