@@ -3,17 +3,20 @@ class Snake {
   constructor() {
     this.snake = [];
 
-    let head = new Tile();
+    let head = new SnakeBody();
     head.x = Math.max(head.x, (GameConfig.INITIAL_SNAKE_SIZE + GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE) - 1);
     head.x = Math.min(head.x, GameConfig.X_TILES - GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE - 1);
 
     head.y = Math.max(head.y, GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE);
     head.y = Math.min(head.y, GameConfig.Y_TILES - GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE - 1);
 
+    head.dx = 1;
+    head.dy = 0;
+
     this.append(head);
 
     for (let i = 1; i < GameConfig.INITIAL_SNAKE_SIZE; i++) {
-      this.append(new Tile(this.head().x - i, this.head().y));
+      this.append(new SnakeBody(this.head().x - i, this.head().y, 1, 0));
     }
   }
 
@@ -21,8 +24,12 @@ class Snake {
     return this.snake[0];
   }
 
+  tail() {
+    return this.snake[this.snake.length - 1];
+  }
+
   move(dx, dy) {
-    this.prepend(new Tile(this.head().x + dx, this.head().y + dy));
+    this.prepend(new SnakeBody(this.head().x + dx, this.head().y + dy, dx, dy));
     this.dropLast();
   }
 
@@ -73,6 +80,7 @@ class Snake {
   }
 
   eatApple(dx, dy) {
-    this.prepend(new Tile(this.head().x + dx, this.head().y + dy));
+    let tail = this.tail();
+    this.append(new SnakeBody(tail.x + tail.dx, tail.y + tail.dy, tail.dx, tail.dy));
   }
 }
