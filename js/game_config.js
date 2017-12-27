@@ -1,7 +1,7 @@
 'use strict';
 
 var GameConfig = {
-  ENABLE_WALLS: false,
+  ENABLE_WALLS: true,
   INITIAL_SNAKE_SIZE: 5, // must be smaller than X_TILES
   INITIAL_MIN_SNAKE_WALL_DISTANCE: 2,
   X_TILES: 20,
@@ -9,6 +9,6 @@ var GameConfig = {
   BACKGROUND_COLOR: "black",
   APPLE_COLOR: "red",
   SNAKE_COLOR: "lime",
-  GAME_SPEED: 15, // Use 10 for easy, 15 for normal and 25 for hard
+  GAME_SPEED: 8,
   REFRESH_FPS: 60,
 };
