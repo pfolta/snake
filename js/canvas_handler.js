@@ -9,13 +9,13 @@ class CanvasHandler {
     this.appleAnimationScale = 0;
     this.appleAnimationDirection = 1;
 
-    this.setCanvasSize();
-    window.addEventListener("resize", (event) => this.setCanvasSize());
+    this.recomputeCanvas();
+    window.addEventListener("resize", (event) => this.recomputeCanvas());
 
     window.setInterval(() => this.draw(), 1000 / GameConfig.REFRESH_FPS);
   }
 
-  setCanvasSize() {
+  recomputeCanvas() {
     this.canvas.width = Math.floor(this.canvas.clientWidth / GameConfig.X_TILES) * GameConfig.X_TILES * 2;
     this.canvas.height = Math.floor(this.canvas.clientHeight / GameConfig.Y_TILES) * GameConfig.Y_TILES * 2;
 
