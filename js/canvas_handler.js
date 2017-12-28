@@ -1,7 +1,9 @@
 class CanvasHandler {
-  constructor(canvasId) {
+  constructor(canvasId, game) {
     this.canvas = document.getElementById(canvasId);
     this.gc = this.canvas.getContext("2d");
+
+    this.game = game;
 
     this.appleImage = document.getElementById("js-asset-apple");
     this.appleAnimationScale = 0;
@@ -9,6 +11,8 @@ class CanvasHandler {
 
     this.setCanvasSize();
     window.addEventListener("resize", (event) => this.setCanvasSize());
+
+    window.setInterval(() => this.draw(), 1000 / GameConfig.REFRESH_FPS);
   }
 
   setCanvasSize() {
@@ -19,11 +23,11 @@ class CanvasHandler {
     this.tileHeight = Math.floor(this.canvas.height / GameConfig.Y_TILES);
   }
 
-  draw(game) {
+  draw() {
     this.drawBackground();
 
-    if (game.apple != null) this.drawApple(game.apple, game.active);
-    if (game.snake != null) this.drawSnake(game.snake);
+    if (this.game.apple != null) this.drawApple(this.game.apple, this.game.active);
+    if (this.game.snake != null) this.drawSnake(this.game.snake);
   }
 
   drawBackground() {
