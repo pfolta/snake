@@ -4,11 +4,11 @@ class TouchHandler {
 
     game.touchStartX = 0;
     game.touchStartY = 0;
-    game.touchEndX = 0;
-    game.touchEndY = 0;
+    game.touchMoveX = 0;
+    game.touchMoveY = 0;
 
     window.addEventListener("touchstart", (event) => this.handleTouchStart(event), false);
-    window.addEventListener("touchend", (event) => this.handleTouchEnd(event), false);
+    window.addEventListener("touchmove", (event) => this.handleTouchMove(event), false);
   }
 
   handleTouchStart(event) {
@@ -16,16 +16,16 @@ class TouchHandler {
     this.touchStartY = event.changedTouches[0].screenY;
   }
 
-  handleTouchEnd(event) {
-    this.touchEndX = event.changedTouches[0].screenX;
-    this.touchEndY = event.changedTouches[0].screenY;
+  handleTouchMove(event) {
+    this.touchMoveX = event.changedTouches[0].screenX;
+    this.touchMoveY = event.changedTouches[0].screenY;
 
     this.handleTouchGesture();
   }
 
   handleTouchGesture() {
-    let dx = this.touchEndX - this.touchStartX;
-    let dy = this.touchEndY - this.touchStartY;
+    let dx = this.touchMoveX - this.touchStartX;
+    let dy = this.touchMoveY - this.touchStartY;
 
     if (Math.abs(dx) > Math.abs(dy)) {
       if (dx < 0) this.game.left();
