@@ -5,7 +5,7 @@
 body {
   background-color: #000;
 
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 
   margin: 0;
@@ -16,8 +16,10 @@ body {
 }
 
 .snake-canvas {
-  border: 1px #eee solid;
-
   height: 75vmin;
   width: 75vmin;
+}
+
+.assets {
+  display: none;
 }
