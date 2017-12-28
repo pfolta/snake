@@ -27,15 +27,19 @@ class TouchHandler {
   }
 
   handleTouchGesture() {
+    let threshold = 10;
+
     let dx = this.touchMoveX - this.touchStartX;
     let dy = this.touchMoveY - this.touchStartY;
 
-    if (Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) this.game.left();
-      else if (dx > 0) this.game.right();
-    } else {
-      if (dy < 0) this.game.up();
-      else if (dy > 0) this.game.down();
+    if (Math.abs(dx) > threshold || Math.abs(dy) > threshold) {
+      if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) this.game.left();
+        else if (dx > 0) this.game.right();
+      } else if (Math.abs(dx) < Math.abs(dy)) {
+        if (dy < 0) this.game.up();
+        else if (dy > 0) this.game.down();
+      }
     }
   }
 }
