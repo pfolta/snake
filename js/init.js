@@ -7,6 +7,7 @@ let canvasHandler = new CanvasHandler("snake-canvas");
 canvasHandler.draw(game);
 
 let keyboardHandler = new KeyboardHandler(game);
+let touchHandler = new TouchHandler(game);
 
 window.setInterval(() => {
   canvasHandler.draw(game);
