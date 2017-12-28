@@ -5,11 +5,13 @@
 body {
   background-color: #666;
 
-  height: 100vh;
-  width: 100vw;
   margin: 0;
 
   position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 
   display: flex;
   align-items: center;
