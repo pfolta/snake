@@ -18,9 +18,9 @@ class CanvasHandler {
   draw(game) {
     this.clearCanvas();
 
-    if (game.snake != null) this.drawSnake(game.snake);
     if (game.apple != null) this.drawApple(game.apple);
     if (game.score != null) this.drawScore(game.score, game.highscore);
+    if (game.snake != null) this.drawSnake(game.snake);
   }
 
   clearCanvas() {

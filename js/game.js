@@ -76,9 +76,6 @@ class Game {
   game() {
     if (GameConfig.ENABLE_WALLS && this.snake.aboutToCollideWithWalls(this.dx, this.dy)) return this.endGame();
 
-    this.snake.move(this.dx, this.dy);
-    this.snake.loopThroughWalls();
-
     // Snake eats an apple
     if (Tile.collides(this.snake.head(), this.apple)) {
       this.snake.eatApple();
@@ -88,6 +85,10 @@ class Game {
       this.score++;
       this.highscore = Math.max(this.highscore, this.score);
     }
+
+    // Move snake
+    this.snake.move(this.dx, this.dy);
+    this.snake.loopThroughWalls();
 
     // Snake collides with itself
     if (this.snake.collidesWithItself()) return this.endGame();
