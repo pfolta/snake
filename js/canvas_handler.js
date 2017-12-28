@@ -63,7 +63,7 @@ class CanvasHandler {
       else this.appleAnimationDirection = 1;
     }
 
-    this.drawImageOnTileWithScaleFactor(this.appleImage, apple, 1 - (0.25 * this.appleAnimationScale / GameConfig.REFRESH_FPS));
+    this.drawImageOnTileWithScaleFactor(this.appleImage, apple, 1 - (0.2 * this.appleAnimationScale / GameConfig.REFRESH_FPS));
   }
 
   drawImageOnTile(image, tile) {
