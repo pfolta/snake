@@ -27,7 +27,7 @@ class TouchHandler {
   }
 
   handleTouchGesture() {
-    let threshold = 10;
+    let threshold = 5;
 
     let dx = this.touchMoveX - this.touchStartX;
     let dy = this.touchMoveY - this.touchStartY;
