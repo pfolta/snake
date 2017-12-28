@@ -23,12 +23,12 @@ class Game {
   }
 
   startGame() {
-    if (!this.ready) this.newGame();
+    if (!this.active) {
+      if (!this.ready) this.newGame();
 
-    this.active = true;
-    this.gameInterval = window.setInterval(() => {
-      this.game();
-    }, 1000 / GameConfig.GAME_SPEED);
+      this.active = true;
+      this.gameInterval = window.setInterval(() => this.game(), 1000 / GameConfig.GAME_SPEED);
+    }
   }
 
   stopGame() {
@@ -46,28 +46,32 @@ class Game {
   }
 
   left() {
-    if (this.active && this.dx != 1) {
+    if (this.dx != 1) {
+      this.startGame();
       this.dx = -1;
       this.dy = 0;
     }
   }
 
   up() {
-    if (this.active && this.dy != 1) {
+    if (this.dy != 1) {
+      this.startGame();
       this.dx = 0;
       this.dy = -1;
     }
   }
 
   right() {
-    if (this.active && this.dx != -1) {
+    if (this.dx != -1) {
+      this.startGame();
       this.dx = 1;
       this.dy = 0;
     }
   }
 
   down() {
-    if (this.active && this.dy != -1) {
+    if (this.dy != -1) {
+      this.startGame();
       this.dx = 0;
       this.dy = 1;
     }
