@@ -4,6 +4,10 @@ class Game {
     this.highscore = 0;
   }
 
+  registerUiHandler(uiHandler) {
+    this.uiHandler = uiHandler;
+  }
+
   newGame() {
     this.score = 0;
 
@@ -15,6 +19,8 @@ class Game {
 
     this.dx = 1;
     this.dy = 0;
+
+    this.uiHandler.updateUiControls();
   }
 
   startStopGame() {
@@ -41,8 +47,6 @@ class Game {
     this.ready = false;
 
     console.log("Game over!");
-    console.log("Your score is " + this.score);
-    console.log("Your high score is " + this.highscore);
   }
 
   left() {
@@ -88,6 +92,7 @@ class Game {
       // Update score and highscore
       this.score++;
       this.highscore = Math.max(this.highscore, this.score);
+      this.uiHandler.updateUiControls();
     }
 
     // Move snake

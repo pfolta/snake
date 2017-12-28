@@ -13,7 +13,29 @@
   </head>
 
   <body>
-    <canvas class="snake-canvas" id="js-snake-canvas"></canvas>
+    <div class="snake-container">
+      <div class="ui-controls">
+        <div class="ui-score">
+          <div class="score">
+            <span class="score-icon">Score:</span>
+            <span id="js-score">0</span>
+          </div>
+          <div class="highscore">
+            <span class="highscore-icon">High:</span>
+            <span id="js-highscore">0</span>
+          </div>
+        </div>
+        <div class="ui-buttons">
+          <div class="ui-button">
+            Settings
+          </div>
+          <div class="ui-button">
+            Help
+          </div>
+        </div>
+      </div>
+      <canvas class="snake-canvas" id="js-snake-canvas"></canvas>
+    </div>
 
     <div class="js-assets assets">
       <img id="js-asset-apple" src="images/apple-asset.svg">
@@ -27,6 +49,7 @@
     <script type="text/javascript" src="js/snake_body.js"></script>
     <script type="text/javascript" src="js/apple.js"></script>
     <script type="text/javascript" src="js/canvas_handler.js"></script>
+    <script type="text/javascript" src="js/ui_handler.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
   </body>
