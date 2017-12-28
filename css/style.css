@@ -6,6 +6,8 @@ body {
   background-color: #000;
 
   min-height: 100vh;
+  overflow: hidden;
+
   margin: 0;
 
   display: flex;
