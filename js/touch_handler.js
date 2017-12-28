@@ -21,6 +21,9 @@ class TouchHandler {
     this.touchMoveY = event.changedTouches[0].screenY;
 
     this.handleTouchGesture();
+
+    this.touchStartX = this.touchMoveX;
+    this.touchStartY = this.touchMoveY;
   }
 
   handleTouchGesture() {
