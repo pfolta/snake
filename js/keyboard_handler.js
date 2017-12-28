@@ -2,9 +2,7 @@ class KeyboardHandler {
   constructor(game) {
     this.game = game;
 
-    window.addEventListener("keydown", (event) => {
-      this.handleKeyEvent(event);
-    });
+    window.addEventListener("keydown", (event) => this.handleKeyEvent(event));
   }
 
   handleKeyEvent(event) {

@@ -5,9 +5,7 @@ class CanvasHandler {
 
     this.setCanvasSize();
 
-    window.addEventListener("resize", (event) => {
-      this.setCanvasSize();
-    });
+    window.addEventListener("resize", (event) => this.setCanvasSize());
   }
 
   setCanvasSize() {
