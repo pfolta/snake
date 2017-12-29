@@ -4,19 +4,15 @@ class Snake {
     this.snake = [];
 
     let head = new SnakeBody();
-    head.x = Math.max(head.x, (GameConfig.INITIAL_SNAKE_SIZE + GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE) - 1);
-    head.x = Math.min(head.x, GameConfig.X_TILES - GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE - 1);
-
-    head.y = Math.max(head.y, GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE);
-    head.y = Math.min(head.y, GameConfig.Y_TILES - GameConfig.INITIAL_MIN_SNAKE_WALL_DISTANCE - 1);
-
+    head.x = GameConfig.INITIAL_SNAKE_SIZE - 1;
+    head.y = Math.floor(GameConfig.Y_TILES / 2);
     head.dx = 1;
     head.dy = 0;
 
     this.append(head);
 
     for (let i = 1; i < GameConfig.INITIAL_SNAKE_SIZE; i++) {
-      this.append(new SnakeBody(this.head().x - i, this.head().y, 1, 0));
+      this.append(new SnakeBody(this.head().x - i, this.head().y, this.head().dx, this.head().dy));
     }
   }
 
