@@ -7,7 +7,6 @@ var GameConfig = {
   Y_TILES: 21,
   BACKGROUND_COLOR_1: "#aed75b",
   BACKGROUND_COLOR_2: "#9fd24a",
-  APPLE_COLOR: "red",
   SNAKE_COLOR: "purple",
   GAME_SPEED: 8,
   REFRESH_FPS: 30,
