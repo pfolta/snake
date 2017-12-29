@@ -1,6 +1,7 @@
 'use strict';
 
-let game = new Game();
+let storageHandler = new StorageHandler();
+let game = new Game(storageHandler);
 
 let canvasHandler = new CanvasHandler("js-snake-canvas", game);
 let keyboardHandler = new KeyboardHandler(game);

@@ -1,11 +1,17 @@
 class Game {
-  constructor(canvasHandler) {
-    this.canvasHandler = canvasHandler;
-    this.highscore = 0;
+  constructor(storageHandler) {
+    this.HIGHSCORE_STORAGE_KEY = "highscore";
+
+    this.storageHandler = storageHandler
+    this.readStorageContents();
   }
 
   registerUiHandler(uiHandler) {
     this.uiHandler = uiHandler;
+  }
+
+  readStorageContents() {
+    this.highscore = storageHandler.get(this.HIGHSCORE_STORAGE_KEY, 0);
   }
 
   newGame() {
@@ -90,9 +96,7 @@ class Game {
       this.apple = new Apple(this.snake);
 
       // Update score and highscore
-      this.score++;
-      this.highscore = Math.max(this.highscore, this.score);
-      this.uiHandler.updateUiControls();
+      this.increaseScore(1);
     }
 
     // Move snake
@@ -101,5 +105,13 @@ class Game {
 
     // Snake collides with itself
     if (this.snake.collidesWithItself()) return this.endGame();
+  }
+
+  increaseScore(increment) {
+    this.score += increment;
+    this.highscore = Math.max(this.highscore, this.score);
+
+    this.storageHandler.set(this.HIGHSCORE_STORAGE_KEY, this.highscore);
+    this.uiHandler.updateUiControls();
   }
 }
