@@ -40,6 +40,10 @@ body {
   vertical-align: top;
 }
 
+.trophy-icon {
+  color: #daa520;
+}
+
 .ui-buttons {
   display: flex;
 }
