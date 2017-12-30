@@ -76,8 +76,8 @@ body {
 }
 
 .snake-canvas {
-  height: 75vmin;
-  width: 75vmin;
+  height: calc(100vmin - 3rem);
+  width: calc(100vmin - 3rem);
 }
 
 .assets {
