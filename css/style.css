@@ -6,6 +6,12 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  // Disable anchor element popout
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
+  -ms-touch-callout: none;
+  touch-callout: none;
 }
 
 input {
