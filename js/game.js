@@ -56,15 +56,15 @@ class Game {
   }
 
   left() {
-    if (this.dx != 1) {
       this.startGame();
+    if (this.snake.head().dx != 1) {
       this.dx = -1;
       this.dy = 0;
     }
   }
 
   up() {
-    if (this.dy != 1) {
+    if (this.snake.head().dy != 1) {
       this.startGame();
       this.dx = 0;
       this.dy = -1;
@@ -72,7 +72,7 @@ class Game {
   }
 
   right() {
-    if (this.dx != -1) {
+    if (this.snake.head().dx != -1) {
       this.startGame();
       this.dx = 1;
       this.dy = 0;
@@ -80,7 +80,7 @@ class Game {
   }
 
   down() {
-    if (this.dy != -1) {
+    if (this.snake.head().dy != -1) {
       this.startGame();
       this.dx = 0;
       this.dy = 1;
