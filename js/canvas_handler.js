@@ -13,6 +13,7 @@ class CanvasHandler {
 
     this.recomputeCanvas();
     window.addEventListener("resize", (event) => this.recomputeCanvas());
+    window.addEventListener("orientationchange", (event) => this.recomputeCanvas());
 
     window.setInterval(() => this.draw(), 1000 / GameConfig.REFRESH_FPS);
   }
