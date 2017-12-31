@@ -24,8 +24,8 @@ class TouchHandler {
 
     this.handleTouchGesture();
 
-    this.touchStartX = null;
-    this.touchStartY = null;
+    this.touchStartX = this.touchMoveX;
+    this.touchStartY = this.touchMoveY;
   }
 
   handleTouchGesture() {
