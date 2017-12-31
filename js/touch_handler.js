@@ -2,28 +2,30 @@ class TouchHandler {
   constructor(game) {
     this.game = game;
 
-    game.touchStartX = 0;
-    game.touchStartY = 0;
-    game.touchMoveX = 0;
-    game.touchMoveY = 0;
+    game.touchStartX = null;
+    game.touchStartY = null;
+    game.touchMoveX = null;
+    game.touchMoveY = null;
 
     window.addEventListener("touchstart", (event) => this.handleTouchStart(event), false);
     window.addEventListener("touchmove", (event) => this.handleTouchMove(event), false);
   }
 
   handleTouchStart(event) {
-    this.touchStartX = event.changedTouches[0].screenX;
-    this.touchStartY = event.changedTouches[0].screenY;
+    this.touchStartX = event.touches[0].clientX;
+    this.touchStartY = event.touches[0].clientY;
   }
 
   handleTouchMove(event) {
-    this.touchMoveX = event.changedTouches[0].screenX;
-    this.touchMoveY = event.changedTouches[0].screenY;
+    if (this.touchStartX == null || this.touchStartY == null) return;
+
+    this.touchMoveX = event.touches[0].clientX;
+    this.touchMoveY = event.touches[0].clientY;
 
     this.handleTouchGesture();
 
-    this.touchStartX = this.touchMoveX;
-    this.touchStartY = this.touchMoveY;
+    this.touchStartX = null;
+    this.touchStartY = null;
   }
 
   handleTouchGesture() {
