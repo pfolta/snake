@@ -5,6 +5,8 @@ class CanvasHandler {
 
     this.game = game;
 
+    this.uiControls = document.getElementById("js-ui-controls");
+
     this.appleImage = document.getElementById("js-asset-apple");
     this.appleAnimationScale = 0;
     this.appleAnimationDirection = 1;
@@ -16,11 +18,27 @@ class CanvasHandler {
   }
 
   recomputeCanvas() {
+    this.resizeCanvas();
+
     this.canvas.width = Math.floor(this.canvas.clientWidth / GameConfig.X_TILES) * GameConfig.X_TILES * 2;
     this.canvas.height = Math.floor(this.canvas.clientHeight / GameConfig.Y_TILES) * GameConfig.Y_TILES * 2;
 
     this.tileWidth = Math.floor(this.canvas.width / GameConfig.X_TILES);
     this.tileHeight = Math.floor(this.canvas.height / GameConfig.Y_TILES);
+  }
+
+  resizeCanvas() {
+    let availableWidth = window.innerWidth;
+    let availableHeight = window.innerHeight - this.uiControls.clientHeight;
+    let canvasSize;
+
+    if (availableWidth < availableHeight) canvasSize = availableWidth;
+    else canvasSize = availableHeight;
+
+    canvasSize += "px";
+
+    this.canvas.style.width = canvasSize;
+    this.canvas.style.height = canvasSize;
   }
 
   draw() {

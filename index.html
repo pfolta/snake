@@ -19,27 +19,28 @@
   </head>
 
   <body>
-    <div class="snake-container">
-      <div class="ui-controls">
-        <div class="ui-score">
-          <div class="score">
-            <img class="apple-icon" alt="Apple" src="images/apple-asset.svg">
-            <span id="js-score">0</span>
-          </div>
-          <div class="highscore">
-            <i class="fas fa-trophy fa-fw trophy-icon"></i>
-            <span id="js-highscore">0</span>
-          </div>
+    <div id="js-ui-controls" class="ui-controls">
+      <div class="ui-score">
+        <div class="score">
+          <img class="apple-icon" alt="Apple" src="images/apple-asset.svg">
+          <span id="js-score">0</span>
         </div>
-        <div class="ui-buttons">
-          <div class="ui-button">
-            <i class="fas fa-sliders-h fa-fw"></i>
-          </div>
-          <div class="ui-button">
-            <i class="fas fa-question-circle fa-fw"></i>
-          </div>
+        <div class="highscore">
+          <i class="fas fa-trophy fa-fw trophy-icon"></i>
+          <span id="js-highscore">0</span>
         </div>
       </div>
+      <div class="ui-buttons">
+        <div class="ui-button">
+          <i class="fas fa-sliders-h fa-fw"></i>
+        </div>
+        <div class="ui-button">
+          <i class="fas fa-question-circle fa-fw"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas-container">
       <canvas class="snake-canvas" id="js-snake-canvas"></canvas>
     </div>
 
