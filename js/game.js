@@ -2,7 +2,7 @@ class Game {
   constructor(storageHandler) {
     this.HIGHSCORE_STORAGE_KEY = "highscore";
 
-    this.storageHandler = storageHandler
+    this.storageHandler = storageHandler;
     this.readStorageContents();
   }
 
@@ -56,7 +56,6 @@ class Game {
   }
 
   left() {
-      this.startGame();
     if (this.snake.head().dx != 1) {
       this.dx = -1;
       this.dy = 0;
