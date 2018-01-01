@@ -77,6 +77,10 @@ input {
   flex: 1;
 }
 
+.ui-score .score {
+  min-width: 3em;
+}
+
 .twemoji {
   height: 1em;
   width: 1em;
