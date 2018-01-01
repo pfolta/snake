@@ -73,14 +73,10 @@ input {
   flex: 1;
 }
 
-.twemoji-icon {
+.twemoji {
   height: 1em;
   width: 1em;
-  vertical-align: top;
-}
-
-.trophy-icon {
-  color: #daa520;
+  vertical-align: -0.15em;
 }
 
 .ui-buttons {
