@@ -64,6 +64,10 @@ input {
   font-size: 1.25rem;
 }
 
+.ios-status-bar {
+  padding-top: 20px;
+}
+
 .ui-controls div {
   margin: 0.5rem;
 }
