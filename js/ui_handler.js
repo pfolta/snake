@@ -6,7 +6,7 @@ class UiHandler {
       UI_CONTROLS_BAR: document.getElementById("js-ui-controls"),
       SCORE_LABEL: document.getElementById("js-score"),
       HIGHSCORE_LABEL: document.getElementById("js-highscore")
-    }
+    };
 
     this.IOS_STATUS_BAR_CLASS = "ios-status-bar";
 
