@@ -29,8 +29,8 @@ class CanvasHandler {
   }
 
   resizeCanvas() {
-    let availableWidth = window.innerWidth;
-    let availableHeight = window.innerHeight - this.uiControls.clientHeight;
+    let availableWidth = document.documentElement.clientWidth;
+    let availableHeight = document.documentElement.clientHeight - this.uiControls.clientHeight;
     let canvasSize;
 
     if (availableWidth < availableHeight) canvasSize = availableWidth;
