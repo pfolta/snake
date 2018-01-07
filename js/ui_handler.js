@@ -12,6 +12,7 @@ class UiHandler {
 
       MENU_BUTTON: document.getElementById("js-menu-button"),
       MENU: document.getElementById("js-menu"),
+      MENU_RESET_HIGHSCORE: document.getElementById("js-menu-reset-highscore"),
     };
 
     this.setUpEventHandlers();
@@ -19,6 +20,7 @@ class UiHandler {
 
   setUpEventHandlers() {
     this.uiControls.MENU_BUTTON.addEventListener("click", (event) => this.showMenu());
+    this.uiControls.MENU_RESET_HIGHSCORE.addEventListener("click", (event) => this.resetHighscore());
   }
 
   updateUiControls() {
@@ -46,5 +48,10 @@ class UiHandler {
     this.uiControls.OVERLAY.removeEventListener("click", (event) => this.hideMenu());
 
     this.uiControls.MENU.classList.remove("menu-shown");
+  }
+
+  resetHighscore() {
+    this.game.resetHighscore();
+    this.hideMenu();
   }
 }

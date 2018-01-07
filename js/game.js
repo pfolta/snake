@@ -108,9 +108,19 @@ class Game {
 
   increaseScore(increment) {
     this.score += increment;
-    this.highscore = Math.max(this.highscore, this.score);
+    if (this.score > this.highscore) this.setHighscore(this.score);
+
+    this.uiHandler.updateUiControls();
+  }
+
+  setHighscore(highscore) {
+    this.highscore = highscore;
 
     this.storageHandler.set(this.HIGHSCORE_STORAGE_KEY, this.highscore);
     this.uiHandler.updateUiControls();
+  }
+
+  resetHighscore() {
+    this.setHighscore(0);
   }
 }
