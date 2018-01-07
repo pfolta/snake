@@ -1,5 +1,6 @@
 class TouchHandler {
-  constructor(game) {
+  constructor(canvasId, game) {
+    this.canvas = document.getElementById(canvasId);
     this.game = game;
 
     game.touchStartX = null;
@@ -7,8 +8,8 @@ class TouchHandler {
     game.touchMoveX = null;
     game.touchMoveY = null;
 
-    window.addEventListener("touchstart", (event) => this.handleTouchStart(event), false);
-    window.addEventListener("touchmove", (event) => this.handleTouchMove(event), false);
+    this.canvas.addEventListener("touchstart", (event) => this.handleTouchStart(event), false);
+    this.canvas.addEventListener("touchmove", (event) => this.handleTouchMove(event), false);
   }
 
   handleTouchStart(event) {
