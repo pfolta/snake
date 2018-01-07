@@ -17,8 +17,8 @@ class Game {
   newGame() {
     this.score = 0;
 
-    this.active = false;
-    this.ready = true;
+    this.paused = true;
+    this.gameover = false;
 
     this.snake = new Snake();
     this.apple = new Apple(this.snake);
@@ -29,33 +29,35 @@ class Game {
     this.uiHandler.updateUiControls();
   }
 
-  startStopGame() {
-    if (this.active) this.stopGame();
-    else this.startGame();
+  startPauseGame() {
+    if (this.paused) this.startGame();
+    else this.pauseGame();
   }
 
   startGame() {
-    if (!this.active) {
-      if (!this.ready) this.newGame();
+    if (this.gameover) return;
 
-      this.active = true;
+    if (this.paused) {
+      this.paused = false;
       this.gameInterval = window.setInterval(() => this.game(), 1000 / GameConfig.GAME_SPEED);
     }
   }
 
-  stopGame() {
-    this.active = false;
+  pauseGame() {
+    this.paused = true;
     window.clearInterval(this.gameInterval);
   }
 
   endGame() {
-    this.stopGame();
-    this.ready = false;
+    this.pauseGame();
+    this.gameover = true;
 
-    console.log("Game over!");
+    this.uiHandler.showGameOverScreen();
   }
 
   left() {
+    if (this.paused) this.startGame();
+
     if (this.snake.head().dx != 1) {
       this.dx = -1;
       this.dy = 0;
@@ -63,6 +65,8 @@ class Game {
   }
 
   up() {
+    if (this.paused) this.startGame();
+
     if (this.snake.head().dy != 1) {
       this.startGame();
       this.dx = 0;
@@ -71,6 +75,8 @@ class Game {
   }
 
   right() {
+    if (this.paused) this.startGame();
+
     if (this.snake.head().dx != -1) {
       this.startGame();
       this.dx = 1;
@@ -79,6 +85,8 @@ class Game {
   }
 
   down() {
+    if (this.paused) this.startGame();
+
     if (this.snake.head().dy != -1) {
       this.startGame();
       this.dx = 0;

@@ -45,7 +45,7 @@ class CanvasHandler {
   draw() {
     this.drawBackground();
 
-    if (this.game.apple != null) this.drawApple(this.game.apple, this.game.active);
+    if (this.game.apple != null) this.drawApple(this.game.apple, this.game.paused);
     if (this.game.snake != null) this.drawSnake(this.game.snake);
   }
 
@@ -72,9 +72,9 @@ class CanvasHandler {
     }
   }
 
-  drawApple(apple, active) {
-    if (active) this.animateApple(apple);
-    else this.drawImageOnTile(this.appleImage, apple);
+  drawApple(apple, paused) {
+    if (paused) this.drawImageOnTile(this.appleImage, apple);
+    else this.animateApple(apple);
   }
 
   animateApple(apple) {

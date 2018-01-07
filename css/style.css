@@ -2,6 +2,7 @@
 
 @import "overlay.css";
 @import "menu.css";
+@import "gameover-screen.css";
 
 * {
   box-sizing: border-box;

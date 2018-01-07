@@ -10,28 +10,38 @@ class KeyboardHandler {
       case " ":
       case "Escape":
       case "Esc":
-        this.game.startStopGame();
+      case "p": {
+        this.game.startPauseGame();
         break;
+      }
+
       case "ArrowLeft":
       case "Left":
-      case "a":
+      case "a": {
         this.game.left();
         break;
+      }
+
       case "ArrowUp":
       case "Up":
-      case "w":
+      case "w": {
         this.game.up();
         break;
+      }
+
       case "ArrowRight":
       case "Right":
-      case "d":
+      case "d": {
         this.game.right();
         break;
+      }
+
       case "ArrowDown":
       case "Down":
-      case "s":
+      case "s": {
         this.game.down();
         break;
+      }
     }
   }
 }
