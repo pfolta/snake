@@ -62,6 +62,20 @@ input {
   user-select: auto !important;
 }
 
+/* Remove styling from anchors and buttons */
+a, button {
+  background: inherit;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: inherit;
+  margin: inherit;
+  outline: none;
+  text-align: inherit;
+  text-decoration: inherit;
+}
+
 .ui-controls,
 .menu {
   color: #fff;
@@ -96,18 +110,12 @@ input {
   vertical-align: -0.15em;
 }
 
-.ui-buttons {
-  display: flex;
+.icon {
+  margin-right: 0.25rem;
 }
 
-.ui-buttons button {
-  background: inherit;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  padding: inherit;
-  margin: inherit;
-  outline: none;
+.ui-buttons {
+  display: flex;
 }
 
 .canvas-container {

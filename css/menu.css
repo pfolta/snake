@@ -4,13 +4,14 @@
   position: fixed;
   right: 0;
 
+  overflow-y: auto;
+
   width: 256px;
   height: 100vh;
 
   z-index: 3;
 
   padding-top: env(safe-area-inset-top);
-  padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
 
   transform: translateX(100%);
@@ -22,6 +23,30 @@
   transform: translateX(0%);
 }
 
+.menu .menu-header {
+  padding: 1rem;
+}
+
 .menu .menu-content {
-  margin: 1rem;
+  border-top: 1px solid #555;
+  font-size: 1rem;
+}
+
+.menu .menu-content nav > * {
+  display: block;
+  padding: 1rem;
+  width: 100%;
+}
+
+.menu .menu-content nav > *:hover {
+  background-color: #333;
+}
+
+.menu .menu-footer {
+  border-top: 1px solid #555;
+
+  padding: 1rem;
+
+  font-size: 0.85rem;
+  text-align: center;
 }

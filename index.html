@@ -23,17 +23,17 @@
     <div id="js-ui-controls" class="ui-controls">
       <div class="ui-score">
         <div class="score">
-          <img class="twemoji" alt="Apple" src="images/twemoji/apple.svg">
+          <img class="twemoji icon" alt="Apple" src="images/twemoji/apple.svg">
           <span id="js-score">0</span>
         </div>
         <div class="highscore">
-          <img class="twemoji" alt="Trophy" src="images/twemoji/trophy.svg">
+          <img class="twemoji icon" alt="Trophy" src="images/twemoji/trophy.svg">
           <span id="js-highscore">0</span>
         </div>
       </div>
       <div class="ui-buttons">
         <button id="js-menu-button">
-          <i class="fas fa-bars fa-fw"></i>
+          <i class="fas fa-fw fa-bars"></i>
         </button>
       </div>
     </div>
@@ -45,8 +45,24 @@
     <div class="overlay" id="js-overlay"></div>
 
     <div class="menu" id="js-menu">
+      <div class="menu-header">
+        Snake
+      </div>
       <div class="menu-content">
-        Menu
+        <nav>
+          <button><i class="fas fa-fw icon fa-question-circle"></i> How To Play</button>
+          <button><i class="fas fa-fw icon fa-cog"></i> Settings</button>
+          <button><i class="fas fa-fw icon fa-undo-alt"></i> Reset Highscore</button>
+        </nav>
+      </div>
+      <div class="menu-content">
+        <nav>
+          <a href="https://github.com/pfolta/browser-games/tree/master/snake" target="_blank"><i class="fab fa-fw icon fa-github"></i> Source Code</a>
+          <a href="https://github.com/pfolta/browser-games/issues" target="_blank"><i class="fas fa-fw icon fa-bug"></i> Feedback</a>
+        </nav>
+      </div>
+      <div class="menu-footer">
+        Snake
       </div>
     </div>
 
