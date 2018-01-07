@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+@import "overlay.css";
+@import "menu.css";
+
 * {
   box-sizing: border-box;
 
@@ -58,18 +61,19 @@ input {
   user-select: auto !important;
 }
 
+.ui-controls,
+.menu {
+  color: #fff;
+  background-color: #444;
+}
+
 .ui-controls {
   display: flex;
   align-self: stretch;
 
-  color: #fff;
-  background-color: #444;
-
-  font-size: 1.25rem;
-}
-
-.ios-status-bar {
-  padding-top: 20px;
+  padding-left: env(safe-area-inset-left);
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
 }
 
 .ui-controls div {
@@ -93,6 +97,16 @@ input {
 
 .ui-buttons {
   display: flex;
+}
+
+.ui-buttons button {
+  background: inherit;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  padding: inherit;
+  margin: inherit;
+  outline: none;
 }
 
 .canvas-container {
