@@ -1,0 +1,6 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "A JavaScript browser-based version of the video game Snake.",
+  "author": "Peter Folta"
+}
