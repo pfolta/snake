@@ -1,0 +1,12 @@
+{
+  "esversion": 6,
+  "freeze": true,
+  "latedef": true,
+  "noarg": true,
+  "nonbsp" : true,
+  "undef": true,
+  "unused": "strict",
+  "varstmt": true,
+
+  "browser": true
+}
