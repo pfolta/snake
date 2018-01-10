@@ -4,6 +4,7 @@
   "description": "A JavaScript browser-based version of the video game Snake.",
   "author": "Peter Folta",
   "devDependencies": {
+    "del": "~3.0.0",
     "gulp": "~3.9.1",
     "gulp-ruby-sass": "~3.0.0"
   }

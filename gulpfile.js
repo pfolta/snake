@@ -1,5 +1,10 @@
 const gulp = require("gulp");
+const del = require("del");
 const sass = require("gulp-ruby-sass");
+
+gulp.task("clean", () => {
+  return del.sync("dist");
+});
 
 gulp.task("sass", () => {
   return sass(
