@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+$color: #339530;
+
+.a-parent-class {
+  .a-child-class {
+    color: $color;
+  }
+}
