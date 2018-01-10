@@ -5,5 +5,7 @@ $color: #339530;
 .a-parent-class {
   .a-child-class {
     color: $color;
+
+    display: flex;
   }
 }
