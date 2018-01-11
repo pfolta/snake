@@ -16,7 +16,7 @@ gulp.task("clean", () => {
 
 gulp.task("sass", () => {
   return sass(
-      "app/styles/application.scss",
+      "src/app/styles/application.scss",
       {
         emitCompileError: true,
         stopOnError: true
@@ -45,7 +45,7 @@ gulp.task("minify-css", () => {
 
 gulp.task("transpile-js", () => {
   return browserify({
-      entries: ["app/scripts/init.js"]
+      entries: ["src/app/scripts/init.js"]
     })
     .transform(babelify)
     .bundle()
