@@ -13,7 +13,7 @@ const source = require("vinyl-source-stream");
 const uglify = require("gulp-uglify");
 
 gulp.task("clean", () => {
-  return del.sync("dist");
+  return del.sync(["dist", ".sass-cache"]);
 });
 
 gulp.task("sass", () => {
