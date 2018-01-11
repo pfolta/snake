@@ -1,4 +1,6 @@
-class Tile {
+let GameConfig = require("./game_config");
+
+export default class Tile {
   static collides(tileA, tileB) {
     if (tileA.x === tileB.x && tileA.y === tileB.y) return true;
     return false;

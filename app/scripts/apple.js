@@ -1,4 +1,6 @@
-class Apple extends Tile {
+import Tile from "./tile";
+
+export default class Apple extends Tile {
   constructor(snake) {
     super();
 

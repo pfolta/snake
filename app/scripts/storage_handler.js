@@ -1,4 +1,4 @@
-class StorageHandler {
+export default class StorageHandler {
   constructor() {
     this.KEY_PREFIX = "snake";
     this.KEY_SEPARATOR = "###";

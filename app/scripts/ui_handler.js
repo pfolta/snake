@@ -1,4 +1,4 @@
-class UiHandler {
+export default class UiHandler {
   constructor(game) {
     this.game = game;
     this.gameWasRunning = false;
@@ -23,10 +23,10 @@ class UiHandler {
   }
 
   setUpEventHandlers() {
-    this.uiControls.GAMEOVER_SCREEN_BUTTON.addEventListener("click", (event) => this.newGame());
+    this.uiControls.GAMEOVER_SCREEN_BUTTON.addEventListener("click", () => this.newGame());
 
-    this.uiControls.MENU_BUTTON.addEventListener("click", (event) => this.showMenu());
-    this.uiControls.MENU_RESET_HIGHSCORE.addEventListener("click", (event) => this.resetHighscore());
+    this.uiControls.MENU_BUTTON.addEventListener("click", () => this.showMenu());
+    this.uiControls.MENU_RESET_HIGHSCORE.addEventListener("click", () => this.resetHighscore());
   }
 
   updateUiControls() {
@@ -67,7 +67,7 @@ class UiHandler {
     this.gameWasRunning = !this.game.paused;
     this.game.pauseGame();
 
-    this.showOverlay((event) => this.hideMenu());
+    this.showOverlay(() => this.hideMenu());
     this.uiControls.MENU.classList.add("menu-shown");
   }
 

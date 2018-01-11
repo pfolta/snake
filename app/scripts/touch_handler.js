@@ -1,4 +1,4 @@
-class TouchHandler {
+export default class TouchHandler {
   constructor(canvasId, game) {
     this.canvas = document.getElementById(canvasId);
     this.game = game;

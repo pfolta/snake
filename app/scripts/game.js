@@ -1,4 +1,10 @@
-class Game {
+import Apple from "./apple";
+import Snake from "./snake";
+import Tile from "./tile";
+
+let GameConfig = require("./game_config");
+
+export default class Game {
   constructor(storageHandler) {
     this.HIGHSCORE_STORAGE_KEY = "highscore";
 
@@ -11,7 +17,7 @@ class Game {
   }
 
   readStorageContents() {
-    this.highscore = storageHandler.get(this.HIGHSCORE_STORAGE_KEY, 0);
+    this.highscore = this.storageHandler.get(this.HIGHSCORE_STORAGE_KEY, 0);
   }
 
   newGame() {

@@ -8,5 +8,6 @@
   "unused": "strict",
   "varstmt": true,
 
-  "browser": true
+  "browser": true,
+  "node": true
 }

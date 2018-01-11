@@ -1,4 +1,8 @@
-class CanvasHandler {
+import Tile from "./tile";
+
+let GameConfig = require("./game_config");
+
+export default class CanvasHandler {
   constructor(canvasId, game) {
     this.canvas = document.getElementById(canvasId);
     this.gc = this.canvas.getContext("2d");
@@ -12,8 +16,8 @@ class CanvasHandler {
     this.appleAnimationDirection = 1;
 
     this.recomputeCanvas();
-    window.addEventListener("resize", (event) => this.recomputeCanvas());
-    window.addEventListener("orientationchange", (event) => this.recomputeCanvas());
+    window.addEventListener("resize", () => this.recomputeCanvas());
+    window.addEventListener("orientationchange", () => this.recomputeCanvas());
 
     window.setInterval(() => this.draw(), 1000 / GameConfig.REFRESH_FPS);
   }

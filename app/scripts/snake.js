@@ -1,4 +1,9 @@
-class Snake {
+import SnakeBody from "./snake_body";
+import Tile from "./tile";
+
+let GameConfig = require("./game_config");
+
+export default class Snake {
   // Creates a new snake at a random location with configured initial length
   constructor() {
     this.snake = [];

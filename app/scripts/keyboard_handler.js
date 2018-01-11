@@ -1,4 +1,4 @@
-class KeyboardHandler {
+export default class KeyboardHandler {
   constructor(game) {
     this.game = game;
 
