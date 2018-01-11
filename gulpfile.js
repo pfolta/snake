@@ -7,6 +7,7 @@ const sass = require("gulp-ruby-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
 
+const jshint = require("gulp-jshint");
 const browserify = require("browserify");
 const babelify = require("babelify");
 const source = require("vinyl-source-stream");
@@ -43,6 +44,13 @@ gulp.task("minify-css", () => {
     )
     .pipe(cssnano())
     .pipe(gulp.dest("dist/styles"));
+});
+
+gulp.task("jshint", () => {
+  return gulp.src("src/app/scripts/**/*.js")
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task("transpile-js", () => {
