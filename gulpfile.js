@@ -1,12 +1,14 @@
 const gulp = require("gulp");
+
 const del = require("del");
 const rename = require("gulp-rename");
+
 const sass = require("gulp-ruby-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
 
-const babelify = require("babelify");
 const browserify = require("browserify");
+const babelify = require("babelify");
 const source = require("vinyl-source-stream");
 const uglify = require("gulp-uglify");
 
