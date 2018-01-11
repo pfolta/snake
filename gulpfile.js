@@ -5,6 +5,10 @@ const sass = require("gulp-ruby-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
 
+const babelify = require("babelify");
+const browserify = require("browserify");
+const source = require("vinyl-source-stream");
+
 gulp.task("clean", () => {
   return del.sync("dist");
 });
@@ -36,6 +40,16 @@ gulp.task("minify-css", () => {
     )
     .pipe(cssnano())
     .pipe(gulp.dest("dist/styles"));
+});
+
+gulp.task("transpile-js", () => {
+  return browserify({
+      entries: ["app/scripts/init.js"]
+    })
+    .transform(babelify)
+    .bundle()
+    .pipe(source("application.js"))
+    .pipe(gulp.dest("dist/scripts"));
 });
 
 gulp.task("default", () => console.log("default task"));

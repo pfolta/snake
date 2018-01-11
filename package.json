@@ -4,11 +4,16 @@
   "description": "A JavaScript browser-based version of the video game Snake.",
   "author": "Peter Folta",
   "devDependencies": {
+    "babel-core": "~6.26.0",
+    "babel-preset-env": "~1.6.1",
+    "babelify": "~8.0.0",
+    "browserify": "~15.0.0",
     "del": "~3.0.0",
     "gulp": "~3.9.1",
     "gulp-autoprefixer": "~4.1.0",
     "gulp-cssnano": "~2.1.2",
     "gulp-rename": "~1.2.2",
-    "gulp-ruby-sass": "~3.0.0"
+    "gulp-ruby-sass": "~3.0.0",
+    "vinyl-source-stream": "~2.0.0"
   }
 }
