@@ -8,6 +8,7 @@ const cssnano = require("gulp-cssnano");
 const babelify = require("babelify");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
+const uglify = require("gulp-uglify");
 
 gulp.task("clean", () => {
   return del.sync("dist");
@@ -49,6 +50,16 @@ gulp.task("transpile-js", () => {
     .transform(babelify)
     .bundle()
     .pipe(source("application.js"))
+    .pipe(gulp.dest("dist/scripts"));
+});
+
+gulp.task("minify-js", () => {
+  return gulp.src(["dist/scripts/*.js", "!dist/scripts/*.min.js"])
+    .pipe(rename({
+        suffix: ".min"
+      })
+    )
+    .pipe(uglify())
     .pipe(gulp.dest("dist/scripts"));
 });
 
