@@ -3,6 +3,7 @@ const gulp = require("gulp");
 const del = require("del");
 const rename = require("gulp-rename");
 
+const sasslint = require("gulp-sass-lint");
 const sass = require("gulp-ruby-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
@@ -15,6 +16,13 @@ const uglify = require("gulp-uglify");
 
 gulp.task("clean", () => {
   return del.sync(["dist", ".sass-cache"]);
+});
+
+gulp.task("sasslint", () => {
+  return gulp.src("src/app/styles/**/*.s+(a|c)ss")
+    .pipe(sasslint())
+    .pipe(sasslint.format())
+    .pipe(sasslint.failOnError());
 });
 
 gulp.task("sass", () => {

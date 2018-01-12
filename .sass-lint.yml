@@ -1,0 +1,37 @@
+options:
+  merge-default-rules: false
+
+rules:
+  brace-style:
+    - 2
+    -
+      style: '1tbs'
+
+  class-name-format:
+    - 2
+    - convention: hyphenatedlowercase
+
+  empty-line-between-blocks: 2
+  final-newline: 2
+
+  indentation:
+    - 2
+    -
+      size: 2
+
+  mixin-name-format:
+    - 2
+    -
+      convention: hyphenatedlowercase
+
+  no-debug: 2
+  no-empty-rulesets: 2
+  no-misspelled-properties: 2
+  one-declaration-per-line: 2
+  single-line-per-selector: 2
+  space-around-operator: 2
+  space-before-bang: 2
+  space-before-brace: 2
+  space-before-colon: 2
+  space-between-parens: 2
+  zero-unit: 2
