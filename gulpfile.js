@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const runSequence = require("run-sequence");
 
 const del = require("del");
 const rename = require("gulp-rename");
@@ -91,4 +92,8 @@ gulp.task("minify-js", () => {
     .pipe(gulp.dest("dist/scripts"));
 });
 
-gulp.task("default", () => console.log("default task"));
+gulp.task("build", (callback) => {
+  runSequence("clean", "slm", "sasslint", "sass", "autoprefix-css", "minify-css", "jshint", "transpile-js", "minify-js", callback);
+});
+
+gulp.task("default", ["build"], () => {});
