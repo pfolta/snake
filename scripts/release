@@ -1,3 +1,5 @@
 #!/bin/sh
 
+echo "Running 'gulp -LLLL --env=production release'"
+
 gulp -LLLL --env=production release
