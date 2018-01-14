@@ -1,0 +1,5 @@
+javascripts:
+  minify: false
+
+stylesheets:
+  minify: false

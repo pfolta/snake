@@ -17,6 +17,17 @@ const babelify = require("babelify");
 const source = require("vinyl-source-stream");
 const uglify = require("gulp-uglify");
 
+// Load gulp helpers.
+const environmentHelper = require("./gulp/helpers/environment_helper");
+const configurationHelper = require("./gulp/helpers/configuration_helper");
+
+// Set environment variable.
+global.environment = environmentHelper.getEnvironment();
+
+// Set configuration object.
+configurationHelper.initialize(global.environment);
+global.configuration = configurationHelper.getConfigurationObject();
+
 gulp.task("clean", () => {
   return del.sync(["dist", ".sass-cache"]);
 });

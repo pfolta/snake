@@ -1,0 +1,4 @@
+source:
+  javascripts: "src/app/scripts"
+  stylesheets: "src/app/styles"
+  views: "src/app/views"
