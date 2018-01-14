@@ -20,5 +20,6 @@ plugins:
 
   gulp-ruby-sass:
     enabled: true
+    cacheLocation: "build/tmp/gulp-ruby-sass/.sass-cache"
     emitCompileError: true
     stopOnError: true
