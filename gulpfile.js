@@ -21,6 +21,10 @@ const uglify = require("gulp-uglify");
 const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
+// Load gulp tasks.
+require("./gulp/tasks/release");
+require("./gulp/tasks/server");
+
 // Set environment variable.
 global.environment = environmentHelper.getEnvironment();
 
@@ -107,4 +111,5 @@ gulp.task("build", (callback) => {
   runSequence("clean", "slm", "sasslint", "sass", "autoprefix-css", "minify-css", "jshint", "transpile-js", "minify-js", callback);
 });
 
-gulp.task("default", ["build"], () => {});
+// Register `gulp release` as the default task.
+gulp.task("default", ["release"], () => {});
