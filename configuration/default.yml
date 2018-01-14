@@ -1,4 +1,19 @@
-source:
-  javascripts: "src/app/scripts"
-  stylesheets: "src/app/styles"
-  views: "src/app/views"
+paths:
+  sources:
+    stylesheets:
+      allFiles: "src/app/styles/**/*.s+(a|c)ss"
+      mainSassFile: "src/app/styles/application.scss"
+
+  build:
+    stylesheets: "build/stylesheets"
+
+plugins:
+  gulp-sass-lint:
+    enabled: true
+    configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"
+    failOnError: true
+
+  gulp-ruby-sass:
+    enabled: true
+    emitCompileError: true
+    stopOnError: true

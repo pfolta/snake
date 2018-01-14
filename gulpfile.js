@@ -6,8 +6,6 @@ const rename = require("gulp-rename");
 
 const slm = require("gulp-slm");
 
-const sasslint = require("gulp-sass-lint");
-const sass = require("gulp-ruby-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
 
@@ -22,6 +20,9 @@ const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
 // Load gulp tasks.
+require("./gulp/tasks/plugins/gulp-ruby-sass");
+require("./gulp/tasks/plugins/gulp-sass-lint");
+
 require("./gulp/tasks/release");
 require("./gulp/tasks/server");
 
@@ -42,23 +43,6 @@ gulp.task("slm", () => {
       pretty: true
     }))
     .pipe(gulp.dest("dist"));
-});
-
-gulp.task("sasslint", () => {
-  return gulp.src("src/app/styles/**/*.s+(a|c)ss")
-    .pipe(sasslint())
-    .pipe(sasslint.format())
-    .pipe(sasslint.failOnError());
-});
-
-gulp.task("sass", () => {
-  return sass(
-      "src/app/styles/application.scss",
-      {
-        emitCompileError: true,
-        stopOnError: true
-      })
-    .pipe(gulp.dest("dist/styles"));
 });
 
 gulp.task("autoprefix-css", () => {

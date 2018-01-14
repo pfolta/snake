@@ -1,5 +1,3 @@
-javascripts:
-  minify: false
-
-stylesheets:
-  minify: false
+plugins:
+  gulp-sass-lint:
+    failOnError: false

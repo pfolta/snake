@@ -1,9 +1,19 @@
 const gulp = require("gulp");
-const log = require("gulplog");
+const runSequence = require("run-sequence");
 
-gulp.task("release", () => {
-  log.info("TODO: Implement `gulp release`.");
+gulp.task("release", (callback) => {
+  let pluginTasks = [];
 
-  log.info(global.configuration.getProperty("source.stylesheets"));
-  log.info(global.configuration.getProperty("javascripts.minify"));
+  // Lint SASS source files.
+  if (global.configuration.getProperty("plugins.gulp-sass-lint.enabled")) {
+    pluginTasks.push("gulp-sass-lint");
+  }
+
+  // Compile SASS source files to CSS.
+  if (global.configuration.getProperty("plugins.gulp-ruby-sass.enabled")) {
+    pluginTasks.push("gulp-ruby-sass");
+  }
+
+  pluginTasks.push(callback);
+  runSequence.apply(null, pluginTasks);
 });
