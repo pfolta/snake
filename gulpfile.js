@@ -1,7 +1,5 @@
 const gulp = require("gulp");
-const runSequence = require("run-sequence");
 
-const del = require("del");
 const rename = require("gulp-rename");
 
 const slm = require("gulp-slm");
@@ -20,6 +18,7 @@ const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
 // Load gulp tasks.
+require("./gulp/tasks/plugins/del");
 require("./gulp/tasks/plugins/gulp-ruby-sass");
 require("./gulp/tasks/plugins/gulp-sass-lint");
 
@@ -32,10 +31,6 @@ global.environment = environmentHelper.getEnvironment();
 // Set configuration object.
 configurationHelper.initialize(global.environment);
 global.configuration = configurationHelper.getConfigurationObject();
-
-gulp.task("clean", () => {
-  return del.sync(["dist", ".sass-cache"]);
-});
 
 gulp.task("slm", () => {
   return gulp.src("src/app/views/*.slm")
@@ -89,10 +84,6 @@ gulp.task("minify-js", () => {
     )
     .pipe(uglify())
     .pipe(gulp.dest("dist/scripts"));
-});
-
-gulp.task("build", (callback) => {
-  runSequence("clean", "slm", "sasslint", "sass", "autoprefix-css", "minify-css", "jshint", "transpile-js", "minify-js", callback);
 });
 
 // Register `gulp release` as the default task.

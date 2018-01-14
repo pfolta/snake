@@ -8,6 +8,11 @@ paths:
     stylesheets: "build/stylesheets"
 
 plugins:
+  del:
+    enabled: true
+    directories:
+      - "build"
+
   gulp-sass-lint:
     enabled: true
     configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"
