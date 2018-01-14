@@ -4,3 +4,6 @@ plugins:
 
   minify-css:
     enabled: false
+
+  lint-js:
+    failOnError: false

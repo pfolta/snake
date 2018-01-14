@@ -29,6 +29,11 @@ gulp.task("release", (callback) => {
     pluginTasks.push("minify-css");
   }
 
+  // Lint JS source files.
+  if (global.configuration.getProperty("plugins.lint-js.enabled")) {
+    pluginTasks.push("lint-js");
+  }
+
   pluginTasks.push(callback);
   runSequence.apply(null, pluginTasks);
 });

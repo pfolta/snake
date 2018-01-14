@@ -4,7 +4,6 @@ const rename = require("gulp-rename");
 
 const slm = require("gulp-slm");
 
-const jshint = require("gulp-jshint");
 const browserify = require("browserify");
 const babelify = require("babelify");
 const source = require("vinyl-source-stream");
@@ -20,6 +19,7 @@ require("./gulp/tasks/plugins/lint-sass");
 require("./gulp/tasks/plugins/compile-sass");
 require("./gulp/tasks/plugins/autoprefix-css");
 require("./gulp/tasks/plugins/minify-css");
+require("./gulp/tasks/plugins/lint-js");
 
 // Load gulp tasks.
 require("./gulp/tasks/release");
@@ -38,13 +38,6 @@ gulp.task("slm", () => {
       pretty: true
     }))
     .pipe(gulp.dest("dist"));
-});
-
-gulp.task("jshint", () => {
-  return gulp.src("src/app/scripts/**/*.js")
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task("transpile-js", () => {

@@ -3,6 +3,7 @@ paths:
     stylesheets:
       allFiles: "src/app/styles/**/*.s+(a|c)ss"
       mainSassFile: "src/app/styles/application.scss"
+    scripts: "src/app/scripts"
 
   build:
     stylesheets: "build/app/stylesheets"
@@ -10,6 +11,8 @@ paths:
 globs:
   allCssFiles: "**/*.css"
   allMinifiedCssFiles: "**/*.min.css"
+  allJsFiles: "**/*.js"
+  allMinifiedJsFiles: "**/*.min.js"
 
 plugins:
   clean:
@@ -35,3 +38,9 @@ plugins:
   minify-css:
     enabled: true
     suffix: ".min"
+
+  lint-js:
+    enabled: true
+    configFile: "configuration/plugins/gulp-jshint/.jshintrc"
+    reporter: "jshint-stylish"
+    failOnError: true
