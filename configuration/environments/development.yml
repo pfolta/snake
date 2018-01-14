@@ -1,3 +1,6 @@
 plugins:
   gulp-sass-lint:
     failOnError: false
+
+  gulp-cssnano:
+    enabled: false

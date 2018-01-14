@@ -4,9 +4,6 @@ const rename = require("gulp-rename");
 
 const slm = require("gulp-slm");
 
-const autoprefixer = require("gulp-autoprefixer");
-const cssnano = require("gulp-cssnano");
-
 const jshint = require("gulp-jshint");
 const browserify = require("browserify");
 const babelify = require("babelify");
@@ -19,8 +16,10 @@ const configurationHelper = require("./gulp/helpers/configuration_helper");
 
 // Load gulp tasks.
 require("./gulp/tasks/plugins/del");
-require("./gulp/tasks/plugins/gulp-ruby-sass");
 require("./gulp/tasks/plugins/gulp-sass-lint");
+require("./gulp/tasks/plugins/gulp-ruby-sass");
+require("./gulp/tasks/plugins/gulp-autoprefixer");
+require("./gulp/tasks/plugins/gulp-cssnano");
 
 require("./gulp/tasks/release");
 require("./gulp/tasks/server");
@@ -38,25 +37,6 @@ gulp.task("slm", () => {
       pretty: true
     }))
     .pipe(gulp.dest("dist"));
-});
-
-gulp.task("autoprefix-css", () => {
-  return gulp.src("dist/styles/*.css")
-    .pipe(autoprefixer({
-        browsers: "> 1%, last 2 versions, Firefox ESR"
-      })
-    )
-    .pipe(gulp.dest("dist/styles"));
-});
-
-gulp.task("minify-css", () => {
-  return gulp.src(["dist/styles/*.css", "!dist/styles/*.min.css"])
-    .pipe(rename({
-        suffix: ".min"
-      })
-    )
-    .pipe(cssnano())
-    .pipe(gulp.dest("dist/styles"));
 });
 
 gulp.task("jshint", () => {

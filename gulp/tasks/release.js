@@ -19,6 +19,16 @@ gulp.task("release", (callback) => {
     pluginTasks.push("gulp-ruby-sass");
   }
 
+  // Autoprefix compiled CSS.
+  if (global.configuration.getProperty("plugins.gulp-autoprefixer.enabled")) {
+    pluginTasks.push("gulp-autoprefixer");
+  }
+
+  // Minify compiled CSS.
+  if (global.configuration.getProperty("plugins.gulp-cssnano.enabled")) {
+    pluginTasks.push("gulp-cssnano");
+  }
+
   pluginTasks.push(callback);
   runSequence.apply(null, pluginTasks);
 });

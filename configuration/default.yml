@@ -7,6 +7,10 @@ paths:
   build:
     stylesheets: "build/app/stylesheets"
 
+globs:
+  allCssFiles: "**/*.css"
+  allMinifiedCssFiles: "**/*.min.css"
+
 plugins:
   del:
     enabled: true
@@ -23,3 +27,11 @@ plugins:
     cacheLocation: "build/tmp/gulp-ruby-sass/.sass-cache"
     emitCompileError: true
     stopOnError: true
+
+  gulp-autoprefixer:
+    enabled: true
+    browsers: "> 1%, last 2 versions, Firefox ESR"
+
+  gulp-cssnano:
+    enabled: true
+    suffix: ".min"
