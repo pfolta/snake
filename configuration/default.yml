@@ -12,26 +12,26 @@ globs:
   allMinifiedCssFiles: "**/*.min.css"
 
 plugins:
-  del:
+  clean:
     enabled: true
     directories:
       - "build"
 
-  gulp-sass-lint:
+  lint-sass:
     enabled: true
     configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"
     failOnError: true
 
-  gulp-ruby-sass:
+  compile-sass:
     enabled: true
     cacheLocation: "build/tmp/gulp-ruby-sass/.sass-cache"
     emitCompileError: true
     stopOnError: true
 
-  gulp-autoprefixer:
+  autoprefix-css:
     enabled: true
     browsers: "> 1%, last 2 versions, Firefox ESR"
 
-  gulp-cssnano:
+  minify-css:
     enabled: true
     suffix: ".min"

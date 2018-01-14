@@ -5,28 +5,28 @@ gulp.task("release", (callback) => {
   let pluginTasks = [];
 
   // Clean build directory
-  if (global.configuration.getProperty("plugins.del.enabled")) {
-    pluginTasks.push("del");
+  if (global.configuration.getProperty("plugins.clean.enabled")) {
+    pluginTasks.push("clean");
   }
 
   // Lint SASS source files.
-  if (global.configuration.getProperty("plugins.gulp-sass-lint.enabled")) {
-    pluginTasks.push("gulp-sass-lint");
+  if (global.configuration.getProperty("plugins.lint-sass.enabled")) {
+    pluginTasks.push("lint-sass");
   }
 
   // Compile SASS source files to CSS.
-  if (global.configuration.getProperty("plugins.gulp-ruby-sass.enabled")) {
-    pluginTasks.push("gulp-ruby-sass");
+  if (global.configuration.getProperty("plugins.compile-sass.enabled")) {
+    pluginTasks.push("compile-sass");
   }
 
   // Autoprefix compiled CSS.
-  if (global.configuration.getProperty("plugins.gulp-autoprefixer.enabled")) {
-    pluginTasks.push("gulp-autoprefixer");
+  if (global.configuration.getProperty("plugins.autoprefix-css.enabled")) {
+    pluginTasks.push("autoprefix-css");
   }
 
   // Minify compiled CSS.
-  if (global.configuration.getProperty("plugins.gulp-cssnano.enabled")) {
-    pluginTasks.push("gulp-cssnano");
+  if (global.configuration.getProperty("plugins.minify-css.enabled")) {
+    pluginTasks.push("minify-css");
   }
 
   pluginTasks.push(callback);

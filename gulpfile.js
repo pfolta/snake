@@ -14,13 +14,14 @@ const uglify = require("gulp-uglify");
 const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
-// Load gulp tasks.
-require("./gulp/tasks/plugins/del");
-require("./gulp/tasks/plugins/gulp-sass-lint");
-require("./gulp/tasks/plugins/gulp-ruby-sass");
-require("./gulp/tasks/plugins/gulp-autoprefixer");
-require("./gulp/tasks/plugins/gulp-cssnano");
+// Load gulp plugin tasks.
+require("./gulp/tasks/plugins/clean");
+require("./gulp/tasks/plugins/lint-sass");
+require("./gulp/tasks/plugins/compile-sass");
+require("./gulp/tasks/plugins/autoprefix-css");
+require("./gulp/tasks/plugins/minify-css");
 
+// Load gulp tasks.
 require("./gulp/tasks/release");
 require("./gulp/tasks/server");
 
