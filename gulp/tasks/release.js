@@ -5,5 +5,5 @@ gulp.task("release", () => {
   log.info("TODO: Implement `gulp release`.");
 
   log.info(global.configuration.getProperty("source.stylesheets"));
-  log.info(global.configuration.getProperty("javascripts.minify"));
+  log.info(global.configuration.getProperty("javascripts.minify.1"));
 });
