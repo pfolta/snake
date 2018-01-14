@@ -4,4 +4,4 @@ node_js: "9"
 before_script:
   - gem install sass -v 3.5.5
 
-script: gulp --env=production release
+script: scripts/release
