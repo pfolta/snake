@@ -1,5 +1,4 @@
 #!/bin/sh
 
 echo "Running 'gulp -LLLL --env=production release'"
-
-gulp -LLLL --env=production release >&1
+gulp -LLLL --env=production release
