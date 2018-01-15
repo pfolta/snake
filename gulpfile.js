@@ -1,12 +1,11 @@
 const gulp = require("gulp");
 
-const slm = require("gulp-slm");
-
 // Load gulp helpers.
 const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
 // Load gulp plugin tasks.
+require("./gulp/tasks/plugins/compile-slm");
 require("./gulp/tasks/plugins/lint-sass");
 require("./gulp/tasks/plugins/compile-sass");
 require("./gulp/tasks/plugins/autoprefix-css");
@@ -26,14 +25,6 @@ global.environment = environmentHelper.getEnvironment();
 // Set configuration object.
 configurationHelper.initialize(global.environment);
 global.configuration = configurationHelper.getConfigurationObject();
-
-gulp.task("slm", () => {
-  return gulp.src("src/app/views/*.slm")
-    .pipe(slm({
-      pretty: true
-    }))
-    .pipe(gulp.dest("dist"));
-});
 
 // Register `gulp release` as the default task.
 gulp.task("default", ["release"], () => {});

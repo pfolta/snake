@@ -9,3 +9,5 @@ html
     .a-parent-class
       .a-child-class
         p = "A paragraph"
+
+    == partial("partials/partial.slm")

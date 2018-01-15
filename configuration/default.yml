@@ -1,5 +1,8 @@
 paths:
   sources:
+    views:
+      directory: "src/app/views"
+      mainFile: "index.slm"
     stylesheets:
       directory: "src/app/styles"
       mainFile: "application.scss"
@@ -9,6 +12,7 @@ paths:
 
   build:
     targetDirectory: "build"
+    views: "build/app"
     stylesheets: "build/app/stylesheets"
     scripts:
       directory: "build/app/scripts"
@@ -22,6 +26,9 @@ globs:
   allMinifiedJsFiles: "**/*.min.js"
 
 plugins:
+  compile-slm:
+    enabled: true
+
   lint-sass:
     enabled: true
     configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"

@@ -4,6 +4,11 @@ const runSequence = require("run-sequence");
 gulp.task("release", (callback) => {
   let pluginTasks = [];
 
+  // Compile SLM source files to HTML.
+  if (global.configuration.getProperty("plugins.compile-slm.enabled")) {
+    pluginTasks.push("compile-slm");
+  }
+
   // Lint SASS source files.
   if (global.configuration.getProperty("plugins.lint-sass.enabled")) {
     pluginTasks.push("lint-sass");
