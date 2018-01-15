@@ -4,11 +4,6 @@ const runSequence = require("run-sequence");
 gulp.task("release", (callback) => {
   let pluginTasks = [];
 
-  // Clean build directory
-  if (global.configuration.getProperty("plugins.clean.enabled")) {
-    pluginTasks.push("clean");
-  }
-
   // Lint SASS source files.
   if (global.configuration.getProperty("plugins.lint-sass.enabled")) {
     pluginTasks.push("lint-sass");

@@ -6,6 +6,7 @@ paths:
     scripts: "src/app/scripts"
 
   build:
+    targetDirectory: "build"
     stylesheets: "build/app/stylesheets"
 
 globs:
@@ -15,11 +16,6 @@ globs:
   allMinifiedJsFiles: "**/*.min.js"
 
 plugins:
-  clean:
-    enabled: true
-    directories:
-      - "build"
-
   lint-sass:
     enabled: true
     configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"

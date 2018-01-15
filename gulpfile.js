@@ -14,7 +14,6 @@ const environmentHelper = require("./gulp/helpers/environment_helper");
 const configurationHelper = require("./gulp/helpers/configuration_helper");
 
 // Load gulp plugin tasks.
-require("./gulp/tasks/plugins/clean");
 require("./gulp/tasks/plugins/lint-sass");
 require("./gulp/tasks/plugins/compile-sass");
 require("./gulp/tasks/plugins/autoprefix-css");
@@ -22,6 +21,7 @@ require("./gulp/tasks/plugins/minify-css");
 require("./gulp/tasks/plugins/lint-js");
 
 // Load gulp tasks.
+require("./gulp/tasks/clean");
 require("./gulp/tasks/release");
 require("./gulp/tasks/server");
 
