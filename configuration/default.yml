@@ -49,3 +49,7 @@ plugins:
 
   transpile-js:
     enabled: true
+
+  minify-js:
+    enabled: true
+    suffix: ".min"

@@ -34,6 +34,11 @@ gulp.task("release", (callback) => {
     pluginTasks.push("transpile-js");
   }
 
+  // Minify compiled JS.
+  if (global.configuration.getProperty("plugins.minify-js.enabled")) {
+    pluginTasks.push("minify-js");
+  }
+
   pluginTasks.push(callback);
   runSequence.apply(null, pluginTasks);
 });

@@ -1,10 +1,6 @@
 const gulp = require("gulp");
 
-const rename = require("gulp-rename");
-
 const slm = require("gulp-slm");
-
-const uglify = require("gulp-uglify");
 
 // Load gulp helpers.
 const environmentHelper = require("./gulp/helpers/environment_helper");
@@ -17,6 +13,7 @@ require("./gulp/tasks/plugins/autoprefix-css");
 require("./gulp/tasks/plugins/minify-css");
 require("./gulp/tasks/plugins/lint-js");
 require("./gulp/tasks/plugins/transpile-js");
+require("./gulp/tasks/plugins/minify-js");
 
 // Load gulp tasks.
 require("./gulp/tasks/clean");
@@ -36,16 +33,6 @@ gulp.task("slm", () => {
       pretty: true
     }))
     .pipe(gulp.dest("dist"));
-});
-
-gulp.task("minify-js", () => {
-  return gulp.src(["dist/scripts/*.js", "!dist/scripts/*.min.js"])
-    .pipe(rename({
-        suffix: ".min"
-      })
-    )
-    .pipe(uglify())
-    .pipe(gulp.dest("dist/scripts"));
 });
 
 // Register `gulp release` as the default task.
