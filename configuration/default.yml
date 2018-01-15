@@ -1,15 +1,17 @@
 paths:
   sources:
     stylesheets:
-      allFiles: "src/app/styles/**/*.s+(a|c)ss"
-      mainSassFile: "src/app/styles/application.scss"
-    scripts: "src/app/scripts"
+      directory: "src/app/styles"
+      mainFile: "application.scss"
+    scripts:
+      directory: "src/app/scripts"
 
   build:
     targetDirectory: "build"
     stylesheets: "build/app/stylesheets"
 
 globs:
+  allSassFiles: "**/*.s+(a|c)ss"
   allCssFiles: "**/*.css"
   allMinifiedCssFiles: "**/*.min.css"
   allJsFiles: "**/*.js"
