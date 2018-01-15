@@ -4,9 +4,6 @@ const rename = require("gulp-rename");
 
 const slm = require("gulp-slm");
 
-const browserify = require("browserify");
-const babelify = require("babelify");
-const source = require("vinyl-source-stream");
 const uglify = require("gulp-uglify");
 
 // Load gulp helpers.
@@ -19,6 +16,7 @@ require("./gulp/tasks/plugins/compile-sass");
 require("./gulp/tasks/plugins/autoprefix-css");
 require("./gulp/tasks/plugins/minify-css");
 require("./gulp/tasks/plugins/lint-js");
+require("./gulp/tasks/plugins/transpile-js");
 
 // Load gulp tasks.
 require("./gulp/tasks/clean");
@@ -38,16 +36,6 @@ gulp.task("slm", () => {
       pretty: true
     }))
     .pipe(gulp.dest("dist"));
-});
-
-gulp.task("transpile-js", () => {
-  return browserify({
-      entries: ["src/app/scripts/init.js"]
-    })
-    .transform(babelify)
-    .bundle()
-    .pipe(source("application.js"))
-    .pipe(gulp.dest("dist/scripts"));
 });
 
 gulp.task("minify-js", () => {

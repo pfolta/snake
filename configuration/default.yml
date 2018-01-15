@@ -5,10 +5,14 @@ paths:
       mainFile: "application.scss"
     scripts:
       directory: "src/app/scripts"
+      mainFile: "application.js"
 
   build:
     targetDirectory: "build"
     stylesheets: "build/app/stylesheets"
+    scripts:
+      directory: "build/app/scripts"
+      outputFile: "application.js"
 
 globs:
   allSassFiles: "**/*.s+(a|c)ss"
@@ -42,3 +46,6 @@ plugins:
     configFile: "configuration/plugins/gulp-jshint/.jshintrc"
     reporter: "jshint-stylish"
     failOnError: true
+
+  transpile-js:
+    enabled: true

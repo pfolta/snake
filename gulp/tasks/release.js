@@ -29,6 +29,11 @@ gulp.task("release", (callback) => {
     pluginTasks.push("lint-js");
   }
 
+  // Transpile JS source files.
+  if (global.configuration.getProperty("plugins.transpile-js.enabled")) {
+    pluginTasks.push("transpile-js");
+  }
+
   pluginTasks.push(callback);
   runSequence.apply(null, pluginTasks);
 });
