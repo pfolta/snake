@@ -1,11 +1,6 @@
 @charset "utf-8";
 
-$color: #339530;
-
-.a-parent-class {
-  .a-child-class {
-    color: $color;
-
-    display: flex;
-  }
-}
+@import "general.scss";
+@import "components/overlay.scss";
+@import "components/menu.scss";
+@import "components/gameover-screen.scss";
