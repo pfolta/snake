@@ -1,5 +1,6 @@
 paths:
   sources:
+    directory: "src/app"
     views:
       directory: "src/app/views"
       mainFile: "index.slm"
@@ -9,6 +10,8 @@ paths:
     scripts:
       directory: "src/app/scripts"
       mainFile: "application.js"
+    assets:
+      directory: "src/app/assets"
 
   build:
     targetDirectory: "build"
@@ -17,46 +20,51 @@ paths:
     scripts:
       directory: "build/app/scripts"
       outputFile: "application.js"
+    assets: "build/app"
 
 globs:
+  allFiles: "**/*"
+  allSlmFiles: "**/*.slm"
   allSassFiles: "**/*.s+(a|c)ss"
   allCssFiles: "**/*.css"
   allMinifiedCssFiles: "**/*.min.css"
   allJsFiles: "**/*.js"
   allMinifiedJsFiles: "**/*.min.js"
 
+tasks:
+  release:
+    - compile-slm
+    - lint-sass
+    - compile-sass
+    - autoprefix-css
+    - minify-css
+    - lint-js
+    - transpile-js
+    - minify-js
 plugins:
   compile-slm:
-    enabled: true
 
   lint-sass:
-    enabled: true
     configFile: "configuration/plugins/gulp-sass-lint/.sass-lint.yml"
     failOnError: true
 
   compile-sass:
-    enabled: true
     cacheLocation: "build/tmp/gulp-ruby-sass/.sass-cache"
     emitCompileError: true
     stopOnError: true
 
   autoprefix-css:
-    enabled: true
     browsers: "> 1%, last 2 versions, Firefox ESR"
 
   minify-css:
-    enabled: true
     suffix: ".min"
 
   lint-js:
-    enabled: true
     configFile: "configuration/plugins/gulp-jshint/.jshintrc"
     reporter: "jshint-stylish"
     failOnError: true
 
   transpile-js:
-    enabled: true
 
   minify-js:
-    enabled: true
     suffix: ".min"
