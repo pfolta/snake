@@ -24,7 +24,7 @@ echo "\$SSH_REPO = $SSH_REPO"
 SHA=$(git rev-parse --verify HEAD)
 echo "\$SHA = $SHA"
 
-Pull requests and commits to other branches should not try to deploy
+# Pull requests and commits to other branches should not try to deploy
 if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
   echo "Pull requests and commits to other branches are not deployed, skipping deployment."
   exit 0
