@@ -4,4 +4,8 @@ node_js: 9
 before_script:
   - gem install sass -v 3.5.5
 
-script: scripts/release
+script:
+  - scripts/release
+
+after_success:
+  - scripts/deploy
