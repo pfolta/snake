@@ -12,14 +12,14 @@ export default class CanvasHandler {
     this.uiControls = document.getElementById("js-ui-controls");
 
     this.appleImage = document.getElementById("js-asset-apple");
-    this.appleAnimationScale = 0;
+    this.appleAnimationScale = 100;
     this.appleAnimationDirection = 1;
 
     this.recomputeCanvas();
     window.addEventListener("resize", () => this.recomputeCanvas());
     window.addEventListener("orientationchange", () => this.recomputeCanvas());
 
-    window.setInterval(() => this.draw(), 1000 / GameConfig.REFRESH_FPS);
+    window.requestAnimationFrame(() => this.draw());
   }
 
   recomputeCanvas() {
@@ -51,6 +51,8 @@ export default class CanvasHandler {
 
     if (this.game.apple != null) this.drawApple(this.game.apple, this.game.paused);
     if (this.game.snake != null) this.drawSnake(this.game.snake);
+
+    window.setTimeout(() => window.requestAnimationFrame(() => this.draw()), 1000 / GameConfig.REFRESH_FPS);
   }
 
   drawBackground() {
@@ -83,14 +85,14 @@ export default class CanvasHandler {
 
   animateApple(apple) {
     if (this.appleAnimationDirection == 1) {
-      if (this.appleAnimationScale < GameConfig.REFRESH_FPS) this.appleAnimationScale += 3;
+      if (this.appleAnimationScale < 120) this.appleAnimationScale += 1;
       else this.appleAnimationDirection = -1;
     } else {
-      if (this.appleAnimationScale > -GameConfig.REFRESH_FPS) this.appleAnimationScale -= 3;
+      if (this.appleAnimationScale > 80) this.appleAnimationScale -= 1;
       else this.appleAnimationDirection = 1;
     }
 
-    this.drawImageOnTileWithScaleFactor(this.appleImage, apple, 1 - (0.2 * this.appleAnimationScale / GameConfig.REFRESH_FPS));
+    this.drawImageOnTileWithScaleFactor(this.appleImage, apple, 0.01 * this.appleAnimationScale);
   }
 
   drawImageOnTile(image, tile) {
