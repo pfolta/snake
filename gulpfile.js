@@ -13,6 +13,7 @@ require("./gulp/tasks/plugins/minify-css");
 require("./gulp/tasks/plugins/lint-js");
 require("./gulp/tasks/plugins/transpile-js");
 require("./gulp/tasks/plugins/minify-js");
+require("./gulp/tasks/plugins/copy-assets.js");
 
 // Load gulp tasks.
 require("./gulp/tasks/clean");
