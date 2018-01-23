@@ -1,3 +1,71 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "TODO: Write deploy script"
+# Script to automatically commit and push a release to GitHub after a successful integration build on Travis CI.
+
+# Exit with nonzero exit code if anything fails
+set -e
+
+REPO_SLUG="pfolta/snake"
+
+SOURCE_BRANCH="master"
+TARGET_BRANCH="gh-pages"
+
+ROOT_DIR=$(pwd)
+RELEASE_DIR="$ROOT_DIR/build/app"
+DEPLOY_DIR="$ROOT_DIR/build/deploy"
+
+# Save some useful information
+REPO=$(git config remote.origin.url)
+echo "\$REPO = $REPO"
+
+SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+echo "\$SSH_REPO = $SSH_REPO"
+
+SHA=$(git rev-parse --verify HEAD)
+echo "\$SHA = $SHA"
+
+Pull requests and commits to other branches should not try to deploy
+if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+  echo "Pull requests and commits to other branches are not deployed, skipping deployment."
+  exit 0
+fi
+
+git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR"
+
+# Clean the $TARGET_BRANCH directory, i.e. remove artifacts from previous build
+cd "$DEPLOY_DIR"
+git rm -rf .
+git clean -fxd
+
+# Copy all current build output to deploy directory
+cp -a "$RELEASE_DIR/." "$DEPLOY_DIR"
+
+# Stage everything
+cd "$DEPLOY_DIR"
+git add -f .
+
+# Set git committer details
+cd "$DEPLOY_DIR"
+git config user.name "Travis CI"
+git config user.email "travis@travis-ci.org"
+
+# Commit the "changes", i.e. the new version.
+git commit --author="$COMMIT_AUTHOR_EMAIL" -m "Deployment of build $SHA
+
+Travis Build: $TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)
+
+Commit: $TRAVIS_COMMIT
+\"$TRAVIS_COMMIT_MESSAGE\""
+
+# Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
+# ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+# ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+# ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+# ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+# openssl aes-256-cbc -K "$ENCRYPTED_KEY" -iv "$ENCRYPTED_IV" -in ../deploy_key.enc -out ../deploy_key -d
+# chmod 600 ../deploy_key
+# eval "$(ssh-agent -s)"
+# ssh-add deploy_key
+
+# Now that we're all set up, we can push.
+git push "$SSH_REPO" "$TARGET_BRANCH"
