@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Script to automatically commit and push a release to GitHub after a successful integration build on Travis CI.
+# This script uses a repository-specific deploy key and is loosely built on top of
+# https://benlimmer.com/2013/12/26/automatically-publish-javadoc-to-gh-pages-with-travis-ci/ and
+# https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
 # Exit with nonzero exit code if anything fails
 set -e
