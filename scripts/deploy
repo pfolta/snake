@@ -21,6 +21,8 @@ DEPLOY_DIR="$ROOT_DIR/build/deploy"
 REPO=$(git config remote.origin.url)
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 
+COMMIT_AUTHOR=$(git --no-pager log --format="%an <%ae>" "$TRAVIS_COMMIT"^!)
+
 # Pull requests and commits to other branches should not try to deploy
 if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
   echo "Pull requests and commits to other branches are not deployed, skipping deployment."
@@ -51,7 +53,7 @@ git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 
 # Commit the "changes", i.e. the new version.
-git commit -m "Deployment of build $TRAVIS_COMMIT
+git commit --author "$COMMIT_AUTHOR" -m "Deployment of build $TRAVIS_COMMIT
 
 Travis Build: #$TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)
 
