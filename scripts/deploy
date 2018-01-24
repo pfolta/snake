@@ -24,7 +24,7 @@ if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false
   exit 0
 fi
 
-git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR"
+git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR" > /dev/null
 cd "$DEPLOY_DIR"
 
 # Clean the $TARGET_BRANCH directory, i.e. remove artifacts from previous build
