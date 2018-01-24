@@ -16,13 +16,8 @@ DEPLOY_DIR="$ROOT_DIR/build/deploy"
 
 # Save some useful information
 REPO=$(git config remote.origin.url)
-echo "\$REPO = $REPO"
-
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-echo "\$SSH_REPO = $SSH_REPO"
-
 SHA=$(git rev-parse --verify HEAD)
-echo "\$SHA = $SHA"
 
 # Pull requests and commits to other branches should not try to deploy
 if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
@@ -50,7 +45,7 @@ git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 
 # Commit the "changes", i.e. the new version.
-git commit --author="$COMMIT_AUTHOR_EMAIL" -m "Deployment of build $SHA
+git commit -m "Deployment of build $SHA
 
 Travis Build: $TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)
 
