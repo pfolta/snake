@@ -17,18 +17,12 @@ DEPLOY_DIR="$ROOT_DIR/build/deploy"
 # Save some useful information
 REPO=$(git config remote.origin.url)
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-SHA=$(git rev-parse --verify HEAD)
 
 # Pull requests and commits to other branches should not try to deploy
 if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
   echo "Pull requests and commits to other branches are not deployed, skipping deployment."
   exit 0
 fi
-
-# Import SSH deploy key
-chmod 600 travis-ci/deploy_key
-eval "$(ssh-agent -s)"
-ssh-add travis-ci/deploy_key
 
 git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR"
 
@@ -44,18 +38,24 @@ cp -a "$RELEASE_DIR/." "$DEPLOY_DIR"
 cd "$DEPLOY_DIR"
 git add -f .
 
+# Don't proceed if there are no build changes (e.g., this is a README update).
+if [ -z "$(git diff --exit-code)" ]; then
+  echo "No changes to build output in this commit, skipping deployment."
+  exit 0
+fi
+
 # Set git committer details
 cd "$DEPLOY_DIR"
 git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 
 # Commit the "changes", i.e. the new version.
-git commit -m "Deployment of build $SHA
+git commit -m "Deployment of build $TRAVIS_COMMIT
 
-Travis Build: $TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)
+Travis Build: #$TRAVIS_BUILD_NUMBER ($TRAVIS_BUILD_ID)
 
 Commit: $TRAVIS_COMMIT
-\"$TRAVIS_COMMIT_MESSAGE\""
+$TRAVIS_COMMIT_MESSAGE"
 
 # Push the commit to $TARGET_BRANCH
 git push "$SSH_REPO" "$TARGET_BRANCH"
