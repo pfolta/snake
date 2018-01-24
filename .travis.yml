@@ -2,8 +2,9 @@ language: node_js
 node_js: 9
 
 install:
-  - npm install -g gulp-cli
   - gem install sass -v 3.5.5
+  - npm install -g gulp-cli
+  - npm install
 
 script:
   - scripts/release
