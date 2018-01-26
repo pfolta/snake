@@ -1,10 +1,6 @@
 language: node_js
 node_js: 9
 
-env:
-  global:
-    - DEPLOY_KEY_TOKEN: 7e9a7f9bc261
-
 before_install: travis-ci/before_install
 install: travis-ci/install
 script: travis-ci/script
