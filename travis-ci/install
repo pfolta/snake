@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gem install sass -v 3.5.5
+npm install -g gulp-cli
+npm install
