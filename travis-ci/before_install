@@ -1,6 +1,6 @@
 #!/bin/bash
 
-openssl aes-256-cbc -K $encrypted_7e9a7f9bc261_key -iv $encrypted_7e9a7f9bc261_iv -in deploy_key.enc -out deploy_key -d
-chmod 600 "deploy_key"
+openssl aes-256-cbc -K $encrypted_7e9a7f9bc261_key -iv $encrypted_7e9a7f9bc261_iv -in travis-ci/deploy_key.enc -out travis-ci/deploy_key -d
+chmod 600 "travis-ci/deploy_key"
 eval "$(ssh-agent -s)"
-ssh-add "deploy_key"
+ssh-add "travis-ci/deploy_key"
