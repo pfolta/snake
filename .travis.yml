@@ -9,6 +9,4 @@ before_install:
 
 install: travis-ci/install
 script: travis-ci/script
-
-after_success:
-  - scripts/deploy
+after_success: travis-ci/after_success
