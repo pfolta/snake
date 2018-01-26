@@ -8,9 +8,7 @@ before_install:
   - ssh-add "travis-ci/deploy_key"
 
 install: travis-ci/install
-
-script:
-  - scripts/release
+script: travis-ci/script
 
 after_success:
   - scripts/deploy
