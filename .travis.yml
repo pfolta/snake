@@ -13,7 +13,7 @@ install:
   - npm install
 
 script:
-  - gulp --env=production clean
   - gulp --env=production release
 
-after_success: travis-ci/after_success
+after_success:
+  - travis-ci/after_success
