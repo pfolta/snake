@@ -29,18 +29,18 @@ if [ "$TRAVIS_REPO_SLUG" != "$REPO_SLUG" ] || [ "$TRAVIS_PULL_REQUEST" != "false
   exit 0
 fi
 
-git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR" > /dev/null
+git clone --quiet --branch="$TARGET_BRANCH" "$SSH_REPO" "$DEPLOY_DIR"
 cd "$DEPLOY_DIR"
 
 # Clean the $TARGET_BRANCH directory, i.e. remove artifacts from previous build
-git rm -rf . > /dev/null
-git clean -fxd > /dev/null
+git rm -rf .
+git clean -fxd
 
 # Copy all current build output to deploy directory
 cp -a "$RELEASE_DIR/." "$DEPLOY_DIR"
 
 # Stage everything
-git add -f . > /dev/null
+git add -f .
 
 # Don't proceed if there are no build changes (e.g., this is a README update).
 if [ -z "$(git diff --cached --exit-code)" ]; then
