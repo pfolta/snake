@@ -1,7 +1,10 @@
 language: node_js
 node_js: 9
 
-before_install: travis-ci/before_install
+before_install:
+  - openssl aes-256-cbc -K "$encrypted_7e9a7f9bc261_key" -iv "$encrypted_7e9a7f9bc261_iv" -in travis-ci/deploy_key.enc -out travis-ci/deploy_key -d
+  - travis-ci/before_install
+
 install: travis-ci/install
 script: travis-ci/script
 after_success: travis-ci/after_success
