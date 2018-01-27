@@ -1,5 +1,0 @@
-#!/bin/bash
-
-chmod 600 "travis-ci/deploy_key"
-eval "$(ssh-agent -s)"
-ssh-add "travis-ci/deploy_key"

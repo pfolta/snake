@@ -1,4 +1,0 @@
-#!/bin/sh
-
-gulp --env=production clean
-gulp --env=production release
