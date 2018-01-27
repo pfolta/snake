@@ -1,0 +1,5 @@
+.gameover-screen id="js-gameover-screen"
+  = "Game over!"
+  button id="js-gameover-screen-button"
+    i class="fas fa-fw icon fa-redo-alt"
+    = "Play again"

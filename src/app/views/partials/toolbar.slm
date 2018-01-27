@@ -1,0 +1,13 @@
+.ui-controls id="js-ui-controls"
+  .ui-score
+    .score
+      img class="twemoji icon" alt="Apple" src="images/twemoji/apple.svg"
+      span id="js-score"
+        = "0"
+    .highscore
+      img class="twemoji icon" alt="Trophy" src="images/twemoji/trophy.svg"
+      span id="js-highscore"
+        = "0"
+  .ui-buttons
+    button id="js-menu-button"
+      i class="fas fa-fw fa-bars"

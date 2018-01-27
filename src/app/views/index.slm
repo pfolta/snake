@@ -20,55 +20,14 @@ html
     script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"
 
   body
-    .ui-controls id="js-ui-controls"
-      .ui-score
-        .score
-          img class="twemoji icon" alt="Apple" src="images/twemoji/apple.svg"
-          span id="js-score"
-            = "0"
-        .highscore
-          img class="twemoji icon" alt="Trophy" src="images/twemoji/trophy.svg"
-          span id="js-highscore"
-            = "0"
-      .ui-buttons
-        button id="js-menu-button"
-          i class="fas fa-fw fa-bars"
+    = partial("partials/toolbar")
 
     .canvas-container
       canvas.snake-canvas id="js-snake-canvas"
 
-    .overlay id="js-overlay"
-
-    .menu id="js-menu"
-      .menu-header
-        = "Snake"
-      .menu-content
-        nav
-          button
-            i class="fas fa-fw icon fa-question-circle"
-            = "How To Play"
-          button
-            i class="fas fa-fw icon fa-cog"
-            = "Settings"
-          button id="js-menu-reset-highscore"
-            i class="fas fa-fw icon fa-undo-alt"
-            = "Reset Highscore"
-      .menu-content
-        nav
-          a href="https://github.com/pfolta/browser-games/tree/master/snake" target="_blank"
-            i class="fab fa-fw icon fa-github"
-            = "Source Code"
-          a href="https://github.com/pfolta/browser-games/issues" target="_blank"
-            i class="fas fa-fw icon fa-bug"
-            = "Feedback"
-      .menu-footer
-        = "Snake"
-
-    .gameover-screen id="js-gameover-screen"
-      = "Game over!"
-      button id="js-gameover-screen-button"
-        i class="fas fa-fw icon fa-redo-alt"
-        = "Play again"
+    = partial("partials/overlay")
+    = partial("partials/menu")
+    = partial("partials/gameover-screen")
 
     .js-assets class="assets"
       img id="js-asset-apple" alt="Apple" src="images/twemoji/apple.svg"
