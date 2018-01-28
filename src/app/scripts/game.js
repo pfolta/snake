@@ -27,7 +27,7 @@ export default class Game {
     this.gameover = false;
 
     this.snake = new Snake();
-    this.apple = new Apple(this.snake);
+    this.apple = Apple.spawnApple(this.snake);
 
     this.dx = 1;
     this.dy = 0;
@@ -106,7 +106,7 @@ export default class Game {
     // Snake eats an apple
     if (Tile.collides(this.snake.head(), this.apple)) {
       this.snake.eatApple();
-      this.apple = new Apple(this.snake);
+      this.apple = Apple.spawnApple(this.snake);
 
       // Update score and highscore
       this.increaseScore(1);
