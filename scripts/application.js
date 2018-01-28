@@ -5,38 +5,53 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _tile = require("./tile");
 
 var _tile2 = _interopRequireDefault(_tile);
+
+var _random = require("./util/random");
+
+var _random2 = _interopRequireDefault(_random);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+var GameConfig = require("./game_config");
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Apple = function (_Tile) {
-  _inherits(Apple, _Tile);
-
-  function Apple(snake) {
+var Apple = function () {
+  function Apple() {
     _classCallCheck(this, Apple);
-
-    // Ensure apple doesn't spawn on top of the snake
-    var _this = _possibleConstructorReturn(this, (Apple.__proto__ || Object.getPrototypeOf(Apple)).call(this));
-
-    while (snake.collidesWith(_this)) {
-      _this.randomize();
-    }return _this;
   }
 
+  _createClass(Apple, null, [{
+    key: "spawnApple",
+    value: function spawnApple(snake) {
+      var availableTiles = [];
+
+      for (var y = 0; y < GameConfig.Y_TILES; y++) {
+        for (var x = 0; x < GameConfig.X_TILES; x++) {
+          var tile = new _tile2.default(x, y);
+
+          if (!snake.collidesWith(tile)) {
+            availableTiles.push(tile);
+          }
+        }
+      }
+
+      var randomTile = _random2.default.randomArrayElement(availableTiles);
+      return new _tile2.default(randomTile.x, randomTile.y);
+    }
+  }]);
+
   return Apple;
-}(_tile2.default);
+}();
 
 exports.default = Apple;
 
-},{"./tile":10}],2:[function(require,module,exports){
+},{"./game_config":5,"./tile":10,"./util/random":13}],2:[function(require,module,exports){
 "use strict";
 
 var _canvas_handler = require("./canvas_handler");
@@ -295,7 +310,7 @@ var Game = function () {
       this.gameover = false;
 
       this.snake = new _snake2.default();
-      this.apple = new _apple2.default(this.snake);
+      this.apple = _apple2.default.spawnApple(this.snake);
 
       this.dx = 1;
       this.dy = 0;
@@ -386,7 +401,7 @@ var Game = function () {
       // Snake eats an apple
       if (_tile2.default.collides(this.snake.head(), this.apple)) {
         this.snake.eatApple();
-        this.apple = new _apple2.default(this.snake);
+        this.apple = _apple2.default.spawnApple(this.snake);
 
         // Update score and highscore
         this.increaseScore(1);
@@ -973,5 +988,39 @@ var UiHandler = function () {
 }();
 
 exports.default = UiHandler;
+
+},{}],13:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Random = function () {
+  function Random() {
+    _classCallCheck(this, Random);
+  }
+
+  _createClass(Random, null, [{
+    key: "randomInt",
+    value: function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+  }, {
+    key: "randomArrayElement",
+    value: function randomArrayElement(array) {
+      var randomIndex = Random.randomInt(0, array.length - 1);
+      return array[randomIndex];
+    }
+  }]);
+
+  return Random;
+}();
+
+exports.default = Random;
 
 },{}]},{},[2]);
