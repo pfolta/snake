@@ -4,7 +4,6 @@ import Tile from "./tile";
 let GameConfig = require("./game_config");
 
 export default class Snake {
-  // Creates a new snake at a random location with configured initial length
   constructor() {
     this.snake = [];
 
@@ -21,6 +20,10 @@ export default class Snake {
     }
   }
 
+  size() {
+    return this.snake.length;
+  }
+
   head() {
     return this.snake[0];
   }
@@ -34,12 +37,12 @@ export default class Snake {
     this.dropLast();
   }
 
-  append(tile) {
-    this.snake.push(tile);
+  append(snakeBody) {
+    this.snake.push(snakeBody);
   }
 
-  prepend(tile) {
-    this.snake.unshift(tile);
+  prepend(snakeBody) {
+    this.snake.unshift(snakeBody);
   }
 
   dropLast() {
