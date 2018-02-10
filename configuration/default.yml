@@ -13,6 +13,9 @@ paths:
     assets:
       directory: "src/app/assets"
 
+  tests:
+    directory: "spec"
+
   build:
     targetDirectory: "build"
     views: "build/app"
@@ -30,18 +33,24 @@ globs:
   allMinifiedCssFiles: "**/*.min.css"
   allJsFiles: "**/*.js"
   allMinifiedJsFiles: "**/*.min.js"
+  allJsTestFiles: "**/*.spec.js"
 
 tasks:
-  release:
-    - compile-slm
+  test:
     - lint-sass
+    - lint-js
+    - test-js
+
+  release:
+    - test
+    - compile-slm
     - compile-sass
     - autoprefix-css
     - minify-css
-    - lint-js
     - transpile-js
     - minify-js
     - copy-assets
+
 plugins:
   compile-slm:
 
@@ -64,6 +73,13 @@ plugins:
     configFile: ".jshintrc"
     reporter: "jshint-stylish"
     failOnError: true
+
+  test-js:
+    reportDir: "build/reports/coverage"
+    reporters:
+      - "html"
+      - "text"
+      - "text-summary"
 
   transpile-js:
 

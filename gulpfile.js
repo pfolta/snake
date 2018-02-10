@@ -11,12 +11,14 @@ require("./gulp/tasks/plugins/compile-sass");
 require("./gulp/tasks/plugins/autoprefix-css");
 require("./gulp/tasks/plugins/minify-css");
 require("./gulp/tasks/plugins/lint-js");
+require("./gulp/tasks/plugins/test-js");
 require("./gulp/tasks/plugins/transpile-js");
 require("./gulp/tasks/plugins/minify-js");
 require("./gulp/tasks/plugins/copy-assets.js");
 
 // Load gulp tasks.
 require("./gulp/tasks/clean");
+require("./gulp/tasks/test");
 require("./gulp/tasks/release");
 require("./gulp/tasks/server");
 

@@ -4,6 +4,9 @@
   "description": "A JavaScript browser-based version of the video game Snake.",
   "author": "Peter Folta",
   "license": "MIT",
+  "scripts": {
+    "test": "gulp test"
+  },
   "devDependencies": {
     "babel-core": "~6.26.0",
     "babel-preset-env": "~1.6.1",
