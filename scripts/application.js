@@ -742,6 +742,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _random = require("./util/random");
+
+var _random2 = _interopRequireDefault(_random);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var GameConfig = require("./game_config");
@@ -773,8 +779,8 @@ var Tile = function () {
   _createClass(Tile, [{
     key: "randomize",
     value: function randomize() {
-      this.x = Math.floor(GameConfig.X_TILES * Math.random());
-      this.y = Math.floor(GameConfig.Y_TILES * Math.random());
+      this.x = _random2.default.random(GameConfig.X_TILES);
+      this.y = _random2.default.random(GameConfig.Y_TILES);
     }
   }]);
 
@@ -783,7 +789,7 @@ var Tile = function () {
 
 exports.default = Tile;
 
-},{"./game_config":5}],11:[function(require,module,exports){
+},{"./game_config":5,"./util/random":13}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
