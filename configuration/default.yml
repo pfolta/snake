@@ -61,7 +61,7 @@ plugins:
     suffix: ".min"
 
   lint-js:
-    configFile: "configuration/plugins/gulp-jshint/.jshintrc"
+    configFile: ".jshintrc"
     reporter: "jshint-stylish"
     failOnError: true
 
