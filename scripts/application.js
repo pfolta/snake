@@ -990,7 +990,7 @@ var UiHandler = function () {
 exports.default = UiHandler;
 
 },{}],13:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1006,15 +1006,32 @@ var Random = function () {
   }
 
   _createClass(Random, null, [{
-    key: "randomInt",
+    key: 'randomInt',
     value: function randomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+      return Math.floor(Math.random() * (max - min) + min);
     }
   }, {
-    key: "randomArrayElement",
+    key: 'randomArrayElement',
     value: function randomArrayElement(array) {
-      var randomIndex = Random.randomInt(0, array.length - 1);
+      var randomIndex = Random.random(array.length);
       return array[randomIndex];
+    }
+  }, {
+    key: 'random',
+    value: function random() {
+      if (arguments.length == 1 && arguments[0] instanceof Array) {
+        return Random.randomArrayElement(arguments[0]);
+      }
+
+      if (arguments.length == 1 && typeof arguments[0] == 'number') {
+        return Random.randomInt(0, arguments[0]);
+      }
+
+      if (arguments.length == 2 && typeof arguments[0] == 'number' && typeof arguments[1] == 'number') {
+        return Random.randomInt(arguments[0], arguments[1]);
+      }
+
+      return Math.random();
     }
   }]);
 
