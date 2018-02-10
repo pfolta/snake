@@ -17,7 +17,7 @@ export default class Apple {
       }
     }
 
-    let randomTile = Random.randomArrayElement(availableTiles);
+    let randomTile = Random.random(availableTiles);
     return new Tile(randomTile.x, randomTile.y);
   }
 }
