@@ -78,6 +78,7 @@ plugins:
     reportDir: "build/reports/coverage"
     reporters:
       - "html"
+      - "lcovonly"
       - "text"
       - "text-summary"
 

@@ -5,7 +5,8 @@
   "author": "Peter Folta",
   "license": "MIT",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "coveralls": "cat build/reports/coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "devDependencies": {
     "babel-core": "~6.26.0",
@@ -13,6 +14,7 @@
     "babelify": "~8.0.0",
     "browserify": "~15.0.0",
     "chai": "~4.1.2",
+    "coveralls": "~3.0.0",
     "del": "~3.0.0",
     "gulp": "~3.9.1",
     "gulp-autoprefixer": "~4.1.0",

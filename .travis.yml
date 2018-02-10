@@ -16,4 +16,5 @@ script:
   - gulp --env=production release
 
 after_success:
+  - npm run coveralls
   - travis-ci/after_success
