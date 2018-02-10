@@ -41,7 +41,7 @@ var Apple = function () {
         }
       }
 
-      var randomTile = _random2.default.randomArrayElement(availableTiles);
+      var randomTile = _random2.default.random(availableTiles);
       return new _tile2.default(randomTile.x, randomTile.y);
     }
   }]);
