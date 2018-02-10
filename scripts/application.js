@@ -558,7 +558,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var GameConfig = require("./game_config");
 
 var Snake = function () {
-  // Creates a new snake at a random location with configured initial length
   function Snake() {
     _classCallCheck(this, Snake);
 
@@ -578,6 +577,11 @@ var Snake = function () {
   }
 
   _createClass(Snake, [{
+    key: "size",
+    value: function size() {
+      return this.snake.length;
+    }
+  }, {
     key: "head",
     value: function head() {
       return this.snake[0];
@@ -595,13 +599,13 @@ var Snake = function () {
     }
   }, {
     key: "append",
-    value: function append(tile) {
-      this.snake.push(tile);
+    value: function append(snakeBody) {
+      this.snake.push(snakeBody);
     }
   }, {
     key: "prepend",
-    value: function prepend(tile) {
-      this.snake.unshift(tile);
+    value: function prepend(snakeBody) {
+      this.snake.unshift(snakeBody);
     }
   }, {
     key: "dropLast",
