@@ -1,5 +1,7 @@
 let GameConfig = require("./game_config");
 
+import Random from "./util/random";
+
 export default class Tile {
   static collides(tileA, tileB) {
     if (tileA.x === tileB.x && tileA.y === tileB.y) return true;
@@ -18,7 +20,7 @@ export default class Tile {
   }
 
   randomize() {
-    this.x = Math.floor(GameConfig.X_TILES * Math.random());
-    this.y = Math.floor(GameConfig.Y_TILES * Math.random());
+    this.x = Random.random(GameConfig.X_TILES);
+    this.y = Random.random(GameConfig.Y_TILES);
   }
 }
