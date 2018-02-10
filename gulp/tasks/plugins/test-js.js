@@ -21,6 +21,7 @@ gulp.task("test-js", ['pre-test-js'], () => {
     .pipe(babel())
     .pipe(injectModules())
     .pipe(mocha())
+    .on("error", process.exit.bind(process, 1))
     .pipe(istanbul.writeReports({
       dir: global.configuration.getProperty("plugins.test-js.reportDir"),
       reporters: global.configuration.getProperty("plugins.test-js.reporters")
