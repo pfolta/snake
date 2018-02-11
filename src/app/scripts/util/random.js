@@ -1,6 +1,6 @@
 module.exports = (function() {
-  function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+  function randomInt(lower, upper) {
+    return Math.floor(Math.random() * (upper - lower) + lower);
   }
 
   function randomArrayElement(choices) {
@@ -20,8 +20,8 @@ module.exports = (function() {
    *   argument.
    *
    * @method random
-   * @param  {Number}  [min]  the lower bound (inclusive)
-   * @param  {Number}  [max]  the upper bound (exclusive)
+   * @param  {Number}  [lower]  the lower bound (inclusive)
+   * @param  {Number}  [upper]  the upper bound (exclusive)
    * @return {Number}  the random number
    */
   /**
