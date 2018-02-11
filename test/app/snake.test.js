@@ -61,20 +61,31 @@ describe('Snake', function() {
 
   describe('move(1, 0)', function() {
     let snake;
-    let dx;
-    let dy;
 
     beforeEach(function() {
       snake = new Snake();
-      dx = 1;
-      dy = 0;
     });
 
     it('should not change the snake size', function() {
       let sizeBeforeMove = snake.size();
-      snake.move(dx, dy);
+      snake.move(1, 0);
       let sizeAfterMove = snake.size();
       assert.equal(sizeAfterMove, sizeBeforeMove);
+    });
+
+    it('should move each SnakeBody by (1, 0)', function() {
+      let snakeBeforeMove = snake.snake.slice();
+      snake.move(1, 0);
+      let snakeAfterMove = snake.snake.slice();
+
+      assert.equal(snakeAfterMove[0].x, snakeBeforeMove[0].x + 1);
+      assert.equal(snakeAfterMove[0].y, snakeBeforeMove[0].y);
+      assert.equal(snakeAfterMove[0].dx, snakeBeforeMove[0].dx);
+      assert.equal(snakeAfterMove[0].dy, snakeBeforeMove[0].dy);
+
+      for (let i = 1; i < snakeAfterMove.length; i++) {
+        assert.equal(snakeAfterMove[i], snakeBeforeMove[i-1]);
+      }
     });
   });
 
