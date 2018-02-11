@@ -30,10 +30,6 @@ describe('Snake', function() {
       snake = new Snake();
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.size);
-    });
-
     it('should return a number', function() {
       assert.isNumber(snake.size());
     });
@@ -46,10 +42,6 @@ describe('Snake', function() {
       snake = new Snake();
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.head);
-    });
-
     it('should return a SnakeBody object', function() {
       assert.instanceOf(snake.head(), SnakeBody);
     });
@@ -60,10 +52,6 @@ describe('Snake', function() {
 
     beforeEach(function() {
       snake = new Snake();
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.tail);
     });
 
     it('should return a SnakeBody object', function() {
@@ -82,10 +70,6 @@ describe('Snake', function() {
       dy = 0;
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.move);
-    });
-
     it('should not change the snake size', function() {
       let sizeBeforeMove = snake.size();
       snake.move(dx, dy);
@@ -101,10 +85,6 @@ describe('Snake', function() {
     beforeEach(function() {
       snake = new Snake();
       snakeBody = new SnakeBody(1, 2, 1, 0);
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.append);
     });
 
     it('should increase the snake size by 1', function() {
@@ -129,10 +109,6 @@ describe('Snake', function() {
       snakeBody = new SnakeBody(1, 2, 1, 0);
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.prepend);
-    });
-
     it('should increase the snake size by 1', function() {
       let sizeBeforeAppend = snake.size();
       snake.prepend(snakeBody);
@@ -153,10 +129,6 @@ describe('Snake', function() {
       snake = new Snake();
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.dropLast);
-    });
-
     it('should decrease the snake size by 1', function() {
       let sizeBeforeDropLast = snake.size();
       snake.dropLast();
@@ -171,10 +143,6 @@ describe('Snake', function() {
 
     beforeEach(function() {
       snake = new Snake();
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.collidesWith);
     });
 
     it('should return false if tile is not part of the snake', function() {
@@ -193,10 +161,6 @@ describe('Snake', function() {
 
     beforeEach(function() {
       snake = new Snake();
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.collidesWithItself);
     });
 
     it('should return false if the head does not collide with the rest of the snake', function() {
@@ -218,10 +182,6 @@ describe('Snake', function() {
 
     beforeEach(function() {
       snake = new Snake();
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.loopThroughWalls);
     });
 
     it('should loop through the left wall', function() {
@@ -292,10 +252,6 @@ describe('Snake', function() {
       snake = new Snake();
     });
 
-    it('should be a function', function() {
-      assert.isFunction(snake.aboutToCollideWithWalls);
-    });
-
     it('should return false if not about to collide with any walls', function() {
       dx = 1;
       dy = 0;
@@ -309,10 +265,6 @@ describe('Snake', function() {
 
     beforeEach(function() {
       snake = new Snake();
-    });
-
-    it('should be a function', function() {
-      assert.isFunction(snake.eatApple);
     });
 
     it('should increase the snake size by 1', function() {

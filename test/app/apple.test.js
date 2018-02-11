@@ -14,10 +14,6 @@ describe('Apple', function() {
       snake = new Snake();
     });
 
-    it('should be a function', function() {
-      assert.isFunction(Apple.spawnApple);
-    });
-
     it('should return a tile', function() {
       assert.instanceOf(Apple.spawnApple(snake), Tile);
     });
