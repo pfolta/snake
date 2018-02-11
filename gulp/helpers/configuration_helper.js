@@ -2,29 +2,29 @@ const fs = require("fs");
 const yaml = require("js-yaml");
 const log = require("gulplog");
 
-module.exports = (() => {
+module.exports = (function() {
   let _defaultConfig;
   let _environmentConfig;
 
-  function loadConfigurationFile(configurationFile) {
+  function _loadConfigurationFile(configurationFile) {
     log.info(`Loading configuration file '${configurationFile}'.`);
     return yaml.safeLoad(fs.readFileSync(configurationFile));
   }
 
-  function getPropertyFromConfig(property, config) {
+  function _getPropertyFromConfig(property, config) {
     return property.split(".").reduce((section, key) => {
       return section ? section[key] : undefined;
     }, config);
   }
 
-  let initialize = (environment) => {
-    _defaultConfig = loadConfigurationFile("configuration/default.yml");
-    _environmentConfig = loadConfigurationFile(`configuration/environments/${environment}.yml`);
-  };
+  function initialize(environment) {
+    _defaultConfig = _loadConfigurationFile("configuration/default.yml");
+    _environmentConfig = _loadConfigurationFile(`configuration/environments/${environment}.yml`);
+  }
 
-  let getProperty = (propertyKey) => {
-    let environmentPropertyValue = getPropertyFromConfig(propertyKey, _environmentConfig);
-    let defaultPropertyValue = getPropertyFromConfig(propertyKey, _defaultConfig);
+  function getProperty(propertyKey) {
+    let environmentPropertyValue = _getPropertyFromConfig(propertyKey, _environmentConfig);
+    let defaultPropertyValue = _getPropertyFromConfig(propertyKey, _defaultConfig);
 
     // An environment-specific property overrides the default property.
     let propertyValue = (environmentPropertyValue !== undefined) ? environmentPropertyValue : defaultPropertyValue;
@@ -35,13 +35,13 @@ module.exports = (() => {
     }
 
     return propertyValue;
-  };
+  }
 
-  let getConfigurationObject = () => {
+  function getConfigurationObject() {
     return {
       getProperty: getProperty
     };
-  };
+  }
 
   return {
     initialize: initialize,
