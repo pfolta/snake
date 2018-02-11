@@ -14,7 +14,7 @@ paths:
       directory: "src/app/assets"
 
   tests:
-    directory: "spec"
+    directory: "test"
 
   build:
     targetDirectory: "build"
@@ -33,7 +33,7 @@ globs:
   allMinifiedCssFiles: "**/*.min.css"
   allJsFiles: "**/*.js"
   allMinifiedJsFiles: "**/*.min.js"
-  allJsTestFiles: "**/*.spec.js"
+  allJsTestFiles: "**/*.test.js"
 
 tasks:
   test:
