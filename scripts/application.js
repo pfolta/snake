@@ -1,59 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _tile = require("./tile");
-
-var _tile2 = _interopRequireDefault(_tile);
-
-var _random = require("./util/random");
-
-var _random2 = _interopRequireDefault(_random);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var GameConfig = require("./game_config");
-
-var Apple = function () {
-  function Apple() {
-    _classCallCheck(this, Apple);
-  }
-
-  _createClass(Apple, null, [{
-    key: "spawnApple",
-    value: function spawnApple(snake) {
-      var availableTiles = [];
-
-      for (var y = 0; y < GameConfig.Y_TILES; y++) {
-        for (var x = 0; x < GameConfig.X_TILES; x++) {
-          var tile = new _tile2.default(x, y);
-
-          if (!snake.collidesWith(tile)) {
-            availableTiles.push(tile);
-          }
-        }
-      }
-
-      var randomTile = _random2.default.random(availableTiles);
-      return new _tile2.default(randomTile.x, randomTile.y);
-    }
-  }]);
-
-  return Apple;
-}();
-
-exports.default = Apple;
-
-},{"./game_config":5,"./tile":10,"./util/random":13}],2:[function(require,module,exports){
-"use strict";
-
 var _canvas_handler = require("./canvas_handler");
 
 var _canvas_handler2 = _interopRequireDefault(_canvas_handler);
@@ -91,7 +38,7 @@ var uiHandler = new _ui_handler2.default(game);
 game.registerUiHandler(uiHandler);
 game.newGame();
 
-},{"./canvas_handler":3,"./game":4,"./keyboard_handler":6,"./storage_handler":9,"./touch_handler":11,"./ui_handler":12}],3:[function(require,module,exports){
+},{"./canvas_handler":2,"./game":3,"./keyboard_handler":5,"./storage_handler":10,"./touch_handler":11,"./ui_handler":12}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -100,7 +47,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _tile = require("./tile");
+var _tile = require("./model/tile");
 
 var _tile2 = _interopRequireDefault(_tile);
 
@@ -254,7 +201,7 @@ var CanvasHandler = function () {
 
 exports.default = CanvasHandler;
 
-},{"./game_config":5,"./tile":10}],4:[function(require,module,exports){
+},{"./game_config":4,"./model/tile":9}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -263,15 +210,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _apple = require("./apple");
+var _apple = require("./model/apple");
 
 var _apple2 = _interopRequireDefault(_apple);
 
-var _snake = require("./snake");
+var _snake = require("./model/snake");
 
 var _snake2 = _interopRequireDefault(_snake);
 
-var _tile = require("./tile");
+var _tile = require("./model/tile");
 
 var _tile2 = _interopRequireDefault(_tile);
 
@@ -442,7 +389,7 @@ var Game = function () {
 
 exports.default = Game;
 
-},{"./apple":1,"./game_config":5,"./snake":7,"./tile":10}],5:[function(require,module,exports){
+},{"./game_config":4,"./model/apple":6,"./model/snake":7,"./model/tile":9}],4:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -457,7 +404,7 @@ module.exports = {
   REFRESH_FPS: 60
 };
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -534,7 +481,60 @@ var KeyboardHandler = function () {
 
 exports.default = KeyboardHandler;
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _random = require("../util/random");
+
+var _random2 = _interopRequireDefault(_random);
+
+var _tile = require("./tile");
+
+var _tile2 = _interopRequireDefault(_tile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var GameConfig = require("../game_config");
+
+var Apple = function () {
+  function Apple() {
+    _classCallCheck(this, Apple);
+  }
+
+  _createClass(Apple, null, [{
+    key: "spawnApple",
+    value: function spawnApple(snake) {
+      var availableTiles = [];
+
+      for (var y = 0; y < GameConfig.Y_TILES; y++) {
+        for (var x = 0; x < GameConfig.X_TILES; x++) {
+          var tile = new _tile2.default(x, y);
+
+          if (!snake.collidesWith(tile)) {
+            availableTiles.push(tile);
+          }
+        }
+      }
+
+      var randomTile = _random2.default.random(availableTiles);
+      return new _tile2.default(randomTile.x, randomTile.y);
+    }
+  }]);
+
+  return Apple;
+}();
+
+exports.default = Apple;
+
+},{"../game_config":4,"../util/random":13,"./tile":9}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -555,7 +555,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var GameConfig = require("./game_config");
+var GameConfig = require("../game_config");
 
 var Snake = function () {
   function Snake() {
@@ -664,7 +664,7 @@ var Snake = function () {
 
 exports.default = Snake;
 
-},{"./game_config":5,"./snake_body":8,"./tile":10}],8:[function(require,module,exports){
+},{"../game_config":4,"./snake_body":8,"./tile":9}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -701,7 +701,7 @@ var SnakeBody = function (_Tile) {
 
 exports.default = SnakeBody;
 
-},{"./tile":10}],9:[function(require,module,exports){
+},{"./tile":9}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -710,43 +710,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var StorageHandler = function () {
-  function StorageHandler() {
-    _classCallCheck(this, StorageHandler);
-
-    this.KEY_PREFIX = "snake";
-    this.KEY_SEPARATOR = "###";
-  }
-
-  _createClass(StorageHandler, [{
-    key: "get",
-    value: function get(key, defaultValue) {
-      return window.localStorage.getItem(this.KEY_PREFIX + this.KEY_SEPARATOR + key) || defaultValue;
-    }
-  }, {
-    key: "set",
-    value: function set(key, value) {
-      window.localStorage.setItem(this.KEY_PREFIX + this.KEY_SEPARATOR + key, value);
-    }
-  }]);
-
-  return StorageHandler;
-}();
-
-exports.default = StorageHandler;
-
-},{}],10:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _random = require("./util/random");
+var _random = require("../util/random");
 
 var _random2 = _interopRequireDefault(_random);
 
@@ -754,7 +718,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var GameConfig = require("./game_config");
+var GameConfig = require("../game_config");
 
 var Tile = function () {
   _createClass(Tile, null, [{
@@ -793,7 +757,43 @@ var Tile = function () {
 
 exports.default = Tile;
 
-},{"./game_config":5,"./util/random":13}],11:[function(require,module,exports){
+},{"../game_config":4,"../util/random":13}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var StorageHandler = function () {
+  function StorageHandler() {
+    _classCallCheck(this, StorageHandler);
+
+    this.KEY_PREFIX = "snake";
+    this.KEY_SEPARATOR = "###";
+  }
+
+  _createClass(StorageHandler, [{
+    key: "get",
+    value: function get(key, defaultValue) {
+      return window.localStorage.getItem(this.KEY_PREFIX + this.KEY_SEPARATOR + key) || defaultValue;
+    }
+  }, {
+    key: "set",
+    value: function set(key, value) {
+      window.localStorage.setItem(this.KEY_PREFIX + this.KEY_SEPARATOR + key, value);
+    }
+  }]);
+
+  return StorageHandler;
+}();
+
+exports.default = StorageHandler;
+
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1053,4 +1053,4 @@ module.exports = function () {
   };
 }();
 
-},{}]},{},[2]);
+},{}]},{},[1]);
