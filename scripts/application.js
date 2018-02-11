@@ -1002,52 +1002,54 @@ exports.default = UiHandler;
 },{}],13:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+module.exports = function () {
+  var _randomInt = function _randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  var _randomArrayElement = function _randomArrayElement(choices) {
+    var randomIndex = _randomInt(0, choices.length);
+    return choices[randomIndex];
+  };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Random = function () {
-  function Random() {
-    _classCallCheck(this, Random);
-  }
-
-  _createClass(Random, null, [{
-    key: 'randomInt',
-    value: function randomInt(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
+  /**
+   * Returns a random integer or floating-point number.
+   *
+   * Takes either 0, 1 or 2 arguments.
+    * If no argument is given, returns a random floating-point number from 0 up to (but not including) 1.
+   * If one argument is given and it is a number, returns a random integer from 0 up to (but not including) the number.
+   * If one argument is given and it is an array, returns a random element from that array.
+   * If two arguments are given, returns a random integer from the first argument up to (but not including) the second argument.
+   *
+   * @method random
+   * @param  {Number} [min] the lower bound (inclusive)
+   * @param  {Number} [max] the upper bound (exclusive)
+   * @return {Number} the random number
+   */
+  /**
+   * @method random
+   * @param  {Array}  [choices]  the array to choose from
+   * @return {*}      the random element from the array
+   */
+  var random = function random() {
+    if (arguments.length == 1 && typeof arguments[0] == 'number') {
+      return _randomInt(0, arguments[0]);
     }
-  }, {
-    key: 'randomArrayElement',
-    value: function randomArrayElement(array) {
-      var randomIndex = Random.random(array.length);
-      return array[randomIndex];
+
+    if (arguments.length == 1 && arguments[0] instanceof Array) {
+      return _randomArrayElement(arguments[0]);
     }
-  }, {
-    key: 'random',
-    value: function random() {
-      if (arguments.length == 1 && arguments[0] instanceof Array) {
-        return Random.randomArrayElement(arguments[0]);
-      }
 
-      if (arguments.length == 1 && typeof arguments[0] == 'number') {
-        return Random.randomInt(0, arguments[0]);
-      }
-
-      if (arguments.length == 2 && typeof arguments[0] == 'number' && typeof arguments[1] == 'number') {
-        return Random.randomInt(arguments[0], arguments[1]);
-      }
-
-      return Math.random();
+    if (arguments.length == 2 && typeof arguments[0] == 'number' && typeof arguments[1] == 'number') {
+      return _randomInt(arguments[0], arguments[1]);
     }
-  }]);
 
-  return Random;
+    return Math.random();
+  };
+
+  return {
+    random: random
+  };
 }();
-
-exports.default = Random;
 
 },{}]},{},[2]);
