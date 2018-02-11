@@ -6,33 +6,33 @@ import Tile from '../../src/app/scripts/tile';
 
 const GameConfig = require('../../src/app/scripts/game_config');
 
-describe('Apple', () => {
-  describe('spawnApple()', () => {
+describe('Apple', function() {
+  describe('spawnApple()', function() {
     let snake;
 
-    beforeEach(() => {
+    beforeEach(function() {
       snake = new Snake();
     });
 
-    it('should be a function', () => {
+    it('should be a function', function() {
       assert.isFunction(Apple.spawnApple);
     });
 
-    it('should return a tile', () => {
+    it('should return a tile', function() {
       assert.instanceOf(Apple.spawnApple(snake), Tile);
     });
 
-    it('should have x coordinate 0 <= x <= GameConfig.X_TILES', () => {
+    it('should have x coordinate 0 <= x <= GameConfig.X_TILES', function() {
       assert.isAtLeast(Apple.spawnApple(snake).x, 0);
       assert.isAtMost(Apple.spawnApple(snake).x, GameConfig.X_TILES);
     });
 
-    it('should have y coordinate 0 <= y <= GameConfig.Y_TILES', () => {
+    it('should have y coordinate 0 <= y <= GameConfig.Y_TILES', function() {
       assert.isAtLeast(Apple.spawnApple(snake).y, 0);
       assert.isAtMost(Apple.spawnApple(snake).y, GameConfig.Y_TILES);
     });
 
-    it('should not collide with the snake', () => {
+    it('should not collide with the snake', function() {
       assert.isFalse(snake.collidesWith(Apple.spawnApple(snake)));
     });
   });
