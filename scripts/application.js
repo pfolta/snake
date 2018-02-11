@@ -1003,14 +1003,14 @@ exports.default = UiHandler;
 'use strict';
 
 module.exports = function () {
-  var _randomInt = function _randomInt(min, max) {
+  function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
-  };
+  }
 
-  var _randomArrayElement = function _randomArrayElement(choices) {
-    var randomIndex = _randomInt(0, choices.length);
+  function randomArrayElement(choices) {
+    var randomIndex = randomInt(0, choices.length);
     return choices[randomIndex];
-  };
+  }
 
   /**
    * Returns a random integer or floating-point number.
@@ -1023,30 +1023,30 @@ module.exports = function () {
    *   argument.
    *
    * @method random
-   * @param  {Number} [min] the lower bound (inclusive)
-   * @param  {Number} [max] the upper bound (exclusive)
-   * @return {Number} the random number
+   * @param  {Number}  [min]  the lower bound (inclusive)
+   * @param  {Number}  [max]  the upper bound (exclusive)
+   * @return {Number}  the random number
    */
   /**
    * @method random
    * @param  {Array}  [choices]  the array to choose from
    * @return {*}      the random element from the array
    */
-  var random = function random() {
+  function random() {
     if (arguments.length == 1 && typeof arguments[0] == 'number') {
-      return _randomInt(0, arguments[0]);
+      return randomInt(0, arguments[0]);
     }
 
     if (arguments.length == 1 && arguments[0] instanceof Array) {
-      return _randomArrayElement(arguments[0]);
+      return randomArrayElement(arguments[0]);
     }
 
     if (arguments.length == 2 && typeof arguments[0] == 'number' && typeof arguments[1] == 'number') {
-      return _randomInt(arguments[0], arguments[1]);
+      return randomInt(arguments[0], arguments[1]);
     }
 
     return Math.random();
-  };
+  }
 
   return {
     random: random
