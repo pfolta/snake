@@ -1,9 +1,9 @@
-const gulp = require("gulp");
+const gulp = require('gulp');
 
-gulp.task("copy-assets", () => {
+gulp.task('copy-assets', () => {
   return gulp.src(
-      global.configuration.getProperty("paths.sources.assets.directory") + "/" +
-      global.configuration.getProperty("globs.allFiles")
+      global.configuration.getProperty('paths.sources.assets.directory') + '/' +
+      global.configuration.getProperty('globs.allFiles')
     )
-    .pipe(gulp.dest(global.configuration.getProperty("paths.build.assets")));
+    .pipe(gulp.dest(global.configuration.getProperty('paths.build.assets')));
 });

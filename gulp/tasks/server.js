@@ -1,6 +1,6 @@
-const gulp = require("gulp");
-const log = require("gulplog");
+const gulp = require('gulp');
+const log = require('gulplog');
 
-gulp.task("server", () => {
-  log.info("TODO: Implement `gulp server`.");
+gulp.task('server', () => {
+  log.info('TODO: Implement `gulp server`.');
 });

@@ -1,12 +1,12 @@
-import Apple from "./model/apple";
-import Snake from "./model/snake";
-import Tile from "./model/tile";
+import Apple from './model/apple';
+import Snake from './model/snake';
+import Tile from './model/tile';
 
-let GameConfig = require("./game_config");
+let GameConfig = require('./game_config');
 
 export default class Game {
   constructor(storageHandler) {
-    this.HIGHSCORE_STORAGE_KEY = "highscore";
+    this.HIGHSCORE_STORAGE_KEY = 'highscore';
 
     this.storageHandler = storageHandler;
     this.readStorageContents();

@@ -1,7 +1,7 @@
 export default class StorageHandler {
   constructor() {
-    this.KEY_PREFIX = "snake";
-    this.KEY_SEPARATOR = "###";
+    this.KEY_PREFIX = 'snake';
+    this.KEY_SEPARATOR = '###';
   }
 
   get(key, defaultValue) {

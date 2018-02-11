@@ -1,7 +1,7 @@
-const log = require("gulplog");
+const log = require('gulplog');
 
-const ENVIRONMENT_ARGUMENT_MARKER = "--env=";
-const DEFAULT_ENVIRONMENT = "production";
+const ENVIRONMENT_ARGUMENT_MARKER = '--env=';
+const DEFAULT_ENVIRONMENT = 'production';
 
 module.exports = {
   getEnvironment: () => {

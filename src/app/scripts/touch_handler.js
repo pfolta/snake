@@ -8,8 +8,8 @@ export default class TouchHandler {
     game.touchMoveX = null;
     game.touchMoveY = null;
 
-    this.canvas.addEventListener("touchstart", (event) => this.handleTouchStart(event), false);
-    this.canvas.addEventListener("touchmove", (event) => this.handleTouchMove(event), false);
+    this.canvas.addEventListener('touchstart', (event) => this.handleTouchStart(event), false);
+    this.canvas.addEventListener('touchmove', (event) => this.handleTouchMove(event), false);
   }
 
   handleTouchStart(event) {

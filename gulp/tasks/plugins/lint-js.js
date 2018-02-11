@@ -1,15 +1,15 @@
-const gulp = require("gulp");
-const jsHint = require("gulp-jshint");
+const gulp = require('gulp');
+const jsHint = require('gulp-jshint');
 
-gulp.task("lint-js", () => {
+gulp.task('lint-js', () => {
   let stream = gulp.src(
-      global.configuration.getProperty("paths.sources.scripts.directory") + "/" +
-      global.configuration.getProperty("globs.allJsFiles")
+      global.configuration.getProperty('paths.sources.scripts.directory') + '/' +
+      global.configuration.getProperty('globs.allJsFiles')
     )
-    .pipe(jsHint(global.configuration.getProperty("plugins.lint-js.configFile")))
-    .pipe(jsHint.reporter(global.configuration.getProperty("plugins.lint-js.reporter")));
+    .pipe(jsHint(global.configuration.getProperty('plugins.lint-js.configFile')))
+    .pipe(jsHint.reporter(global.configuration.getProperty('plugins.lint-js.reporter')));
 
-  if (global.configuration.getProperty("plugins.lint-js.failOnError")) {
+  if (global.configuration.getProperty('plugins.lint-js.failOnError')) {
     stream.pipe(jsHint.reporter('fail'));
   }
 

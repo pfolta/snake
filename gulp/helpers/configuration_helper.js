@@ -1,6 +1,6 @@
-const fs = require("fs");
-const yaml = require("js-yaml");
-const log = require("gulplog");
+const fs = require('fs');
+const yaml = require('js-yaml');
+const log = require('gulplog');
 
 module.exports = (function() {
   let _defaultConfig;
@@ -12,13 +12,13 @@ module.exports = (function() {
   }
 
   function _getPropertyFromConfig(property, config) {
-    return property.split(".").reduce((section, key) => {
+    return property.split('.').reduce((section, key) => {
       return section ? section[key] : undefined;
     }, config);
   }
 
   function initialize(environment) {
-    _defaultConfig = _loadConfigurationFile("configuration/default.yml");
+    _defaultConfig = _loadConfigurationFile('configuration/default.yml');
     _environmentConfig = _loadConfigurationFile(`configuration/environments/${environment}.yml`);
   }
 

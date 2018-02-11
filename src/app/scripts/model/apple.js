@@ -1,7 +1,7 @@
-import Random from "../util/random";
-import Tile from "./tile";
+import Random from '../util/random';
+import Tile from './tile';
 
-let GameConfig = require("../game_config");
+let GameConfig = require('../game_config');
 
 export default class Apple {
   static spawnApple(snake) {

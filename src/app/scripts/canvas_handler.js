@@ -1,23 +1,23 @@
-import Tile from "./model/tile";
+import Tile from './model/tile';
 
-let GameConfig = require("./game_config");
+let GameConfig = require('./game_config');
 
 export default class CanvasHandler {
   constructor(canvasId, game) {
     this.canvas = document.getElementById(canvasId);
-    this.gc = this.canvas.getContext("2d");
+    this.gc = this.canvas.getContext('2d');
 
     this.game = game;
 
-    this.uiControls = document.getElementById("js-ui-controls");
+    this.uiControls = document.getElementById('js-ui-controls');
 
-    this.appleImage = document.getElementById("js-asset-apple");
+    this.appleImage = document.getElementById('js-asset-apple');
     this.appleAnimationScale = 100;
     this.appleAnimationDirection = 1;
 
     this.recomputeCanvas();
-    window.addEventListener("resize", () => this.recomputeCanvas());
-    window.addEventListener("orientationchange", () => this.recomputeCanvas());
+    window.addEventListener('resize', () => this.recomputeCanvas());
+    window.addEventListener('orientationchange', () => this.recomputeCanvas());
 
     window.requestAnimationFrame(() => this.draw());
   }
@@ -40,7 +40,7 @@ export default class CanvasHandler {
     if (availableWidth < availableHeight) canvasSize = availableWidth;
     else canvasSize = availableHeight;
 
-    canvasSize += "px";
+    canvasSize += 'px';
 
     this.canvas.style.width = canvasSize;
     this.canvas.style.height = canvasSize;
