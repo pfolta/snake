@@ -84,7 +84,7 @@ describe('Snake', function() {
       assert.equal(snakeAfterMove[0].dy, snakeBeforeMove[0].dy);
 
       for (let i = 1; i < snakeAfterMove.length; i++) {
-        assert.equal(snakeAfterMove[i], snakeBeforeMove[i-1]);
+        assert.equal(snakeAfterMove[i], snakeBeforeMove[i - 1]);
       }
     });
   });
