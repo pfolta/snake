@@ -3,7 +3,8 @@ const jsHint = require("gulp-jshint");
 
 gulp.task("lint-js", () => {
   let stream = gulp.src(
-      global.configuration.getProperty("paths.sources.scripts.directory") + "/" + global.configuration.getProperty("globs.allJsFiles")
+      global.configuration.getProperty("paths.sources.scripts.directory") + "/" +
+      global.configuration.getProperty("globs.allJsFiles")
     )
     .pipe(jsHint(global.configuration.getProperty("plugins.lint-js.configFile")))
     .pipe(jsHint.reporter(global.configuration.getProperty("plugins.lint-js.reporter")));

@@ -4,8 +4,11 @@ const cssnano = require("gulp-cssnano");
 
 gulp.task("minify-css", () => {
   return gulp.src([
-      global.configuration.getProperty("paths.build.stylesheets") + "/" + global.configuration.getProperty("globs.allCssFiles"),
-      "!" + global.configuration.getProperty("paths.build.stylesheets") + "/" + global.configuration.getProperty("globs.allMinifiedCssFiles")
+      global.configuration.getProperty("paths.build.stylesheets") + "/" +
+      global.configuration.getProperty("globs.allCssFiles"),
+
+      "!" + global.configuration.getProperty("paths.build.stylesheets") + "/" +
+      global.configuration.getProperty("globs.allMinifiedCssFiles")
     ])
     .pipe(rename({
       suffix: global.configuration.getProperty("plugins.minify-css.suffix")
