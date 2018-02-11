@@ -1016,7 +1016,8 @@ module.exports = function () {
    * Returns a random integer or floating-point number.
    *
    * Takes either 0, 1 or 2 arguments.
-    * If no argument is given, returns a random floating-point number from 0 up to (but not including) 1.
+   *
+   * If no argument is given, returns a random floating-point number from 0 up to (but not including) 1.
    * If one argument is given and it is a number, returns a random integer from 0 up to (but not including) the number.
    * If one argument is given and it is an array, returns a random element from that array.
    * If two arguments are given, returns a random integer from the first argument up to (but not including) the second
