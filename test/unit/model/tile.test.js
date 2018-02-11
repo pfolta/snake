@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 
-import Tile from '../../src/app/scripts/tile';
-const GameConfig = require('../../src/app/scripts/game_config');
+import Tile from '../../../src/app/scripts/model/tile';
+const GameConfig = require('../../../src/app/scripts/game_config');
 
 describe('Tile', function() {
   describe('new Tile()', function() {

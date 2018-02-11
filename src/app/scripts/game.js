@@ -1,6 +1,6 @@
-import Apple from "./apple";
-import Snake from "./snake";
-import Tile from "./tile";
+import Apple from "./model/apple";
+import Snake from "./model/snake";
+import Tile from "./model/tile";
 
 let GameConfig = require("./game_config");
 

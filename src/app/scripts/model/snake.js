@@ -1,7 +1,7 @@
 import SnakeBody from "./snake_body";
 import Tile from "./tile";
 
-let GameConfig = require("./game_config");
+let GameConfig = require("../game_config");
 
 export default class Snake {
   constructor() {

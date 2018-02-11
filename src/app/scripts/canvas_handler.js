@@ -1,4 +1,4 @@
-import Tile from "./tile";
+import Tile from "./model/tile";
 
 let GameConfig = require("./game_config");
 

@@ -1,6 +1,6 @@
-let GameConfig = require("./game_config");
+import Random from "../util/random";
 
-import Random from "./util/random";
+let GameConfig = require("../game_config");
 
 export default class Tile {
   static collides(tileA, tileB) {
