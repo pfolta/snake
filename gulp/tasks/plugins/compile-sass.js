@@ -1,14 +1,14 @@
 const gulp = require('gulp');
-const sass = require('gulp-ruby-sass');
+const sass = require('gulp-sass');
 
 gulp.task('compile-sass', () => {
-  return sass(
+  return gulp.src(
       global.configuration.getProperty('paths.sources.stylesheets.directory') + '/' +
-      global.configuration.getProperty('paths.sources.stylesheets.mainFile'),
-      {
-        cacheLocation: global.configuration.getProperty('plugins.compile-sass.cacheLocation'),
-        emitCompileError: global.configuration.getProperty('plugins.compile-sass.emitCompileError'),
-        stopOnError: global.configuration.getProperty('plugins.compile-sass.stopOnError')
-      })
+      global.configuration.getProperty('paths.sources.stylesheets.mainFile')
+    )
+    .pipe(sass.sync().on('error', function(error) {
+      process.stderr.write(error.messageFormatted + '\n');
+      process.exit(1);
+    }))
     .pipe(gulp.dest(global.configuration.getProperty('paths.build.stylesheets')));
 });

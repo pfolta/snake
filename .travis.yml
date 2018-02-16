@@ -8,7 +8,6 @@ before_install:
   - ssh-add "travis-ci/deploy_key"
 
 install:
-  - gem install sass -v 3.5.5
   - npm install -g gulp-cli
   - npm install
 
