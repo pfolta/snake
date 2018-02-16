@@ -6,7 +6,7 @@ gulp.task('compile-sass', () => {
       global.configuration.getProperty('paths.sources.stylesheets.directory') + '/' +
       global.configuration.getProperty('paths.sources.stylesheets.mainFile')
     )
-    .pipe(sass.sync().on('error', function(error) {
+    .pipe(sass.sync().on('error', (error) => {
       process.stderr.write(error.messageFormatted + '\n');
       process.exit(1);
     }))
