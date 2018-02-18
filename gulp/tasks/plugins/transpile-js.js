@@ -12,6 +12,10 @@ gulp.task('transpile-js', () => {
     })
     .transform(babelify)
     .bundle()
+    .on('error', error => {
+      process.stderr.write(error.stack);
+      process.exit(1);
+    })
     .pipe(source(global.configuration.getProperty('paths.build.scripts.outputFile')))
     .pipe(gulp.dest(global.configuration.getProperty('paths.build.scripts.directory')));
 });
