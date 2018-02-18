@@ -105,11 +105,7 @@ var CanvasHandler = function () {
     value: function resizeCanvas() {
       var availableWidth = document.documentElement.clientWidth;
       var availableHeight = document.documentElement.clientHeight - this.uiControls.clientHeight;
-      var canvasSize = void 0;
-
-      if (availableWidth < availableHeight) canvasSize = availableWidth;else canvasSize = availableHeight;
-
-      canvasSize += 'px';
+      var canvasSize = Math.min(availableWidth, availableHeight) + 'px';
 
       this.canvas.style.width = canvasSize;
       this.canvas.style.height = canvasSize;
