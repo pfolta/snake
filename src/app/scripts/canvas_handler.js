@@ -1,4 +1,4 @@
-import config from '../core/config';
+import config from './core/config';
 import Tile from './model/tile';
 
 export default class CanvasHandler {

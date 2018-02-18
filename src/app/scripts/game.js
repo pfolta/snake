@@ -1,5 +1,5 @@
 import Apple from './model/apple';
-import config from '../core/config';
+import config from './core/config';
 import Snake from './model/snake';
 import Tile from './model/tile';
 
