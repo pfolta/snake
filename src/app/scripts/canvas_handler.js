@@ -34,12 +34,7 @@ export default class CanvasHandler {
   resizeCanvas() {
     let availableWidth = document.documentElement.clientWidth;
     let availableHeight = document.documentElement.clientHeight - this.uiControls.clientHeight;
-    let canvasSize;
-
-    if (availableWidth < availableHeight) canvasSize = availableWidth;
-    else canvasSize = availableHeight;
-
-    canvasSize += 'px';
+    let canvasSize = Math.min(availableWidth, availableHeight) + 'px';
 
     this.canvas.style.width = canvasSize;
     this.canvas.style.height = canvasSize;
