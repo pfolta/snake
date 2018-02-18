@@ -1,10 +1,10 @@
-const assert = require('chai').assert;
-
 import Apple from '../../../src/app/scripts/model/apple';
 import Snake from '../../../src/app/scripts/model/snake';
 import Tile from '../../../src/app/scripts/model/tile';
 
 const GameConfig = require('../../../src/app/scripts/game_config');
+
+const assert = require('chai').assert;
 
 describe('Apple', function() {
   describe('spawnApple()', function() {

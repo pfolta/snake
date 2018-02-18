@@ -1,11 +1,10 @@
-import Random from '../util/random';
+import random from '../util/random';
 
 let GameConfig = require('../game_config');
 
 export default class Tile {
   static collides(tileA, tileB) {
-    if (tileA.x === tileB.x && tileA.y === tileB.y) return true;
-    return false;
+    return (tileA.x === tileB.x && tileA.y === tileB.y);
   }
 
   // Creates a tile object with specified x and y coordinate
@@ -20,7 +19,7 @@ export default class Tile {
   }
 
   randomize() {
-    this.x = Random.random(GameConfig.X_TILES);
-    this.y = Random.random(GameConfig.Y_TILES);
+    this.x = random(GameConfig.X_TILES);
+    this.y = random(GameConfig.Y_TILES);
   }
 }

@@ -1,13 +1,13 @@
-const assert = require('chai').assert;
+import random from '../../../src/app/scripts/util/random';
 
-import Random from '../../../src/app/scripts/util/random';
+const assert = require('chai').assert;
 
 describe('Random', function() {
   describe('random()', function() {
     let result;
 
     beforeEach(function() {
-      result = Random.random();
+      result = random();
     });
 
     it('should return a number', function() {
@@ -24,7 +24,7 @@ describe('Random', function() {
     let result;
 
     beforeEach(function() {
-      result = Random.random(5);
+      result = random(5);
     });
 
     it('should return a number', function() {
@@ -41,7 +41,7 @@ describe('Random', function() {
     let result;
 
     beforeEach(function() {
-      result = Random.random(1, 10);
+      result = random(1, 10);
     });
 
     it('should return a number', function() {
@@ -57,7 +57,7 @@ describe('Random', function() {
   describe('random(["apple", "pear", "orange", "grape"])', function() {
     it('should return a fruit', function() {
       let fruits = ['apple', 'pear', 'orange', 'grape'];
-      let result = Random.random(fruits);
+      let result = random(fruits);
       assert.include(fruits, result);
     });
   });

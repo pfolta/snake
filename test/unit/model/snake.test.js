@@ -1,10 +1,10 @@
-const assert = require('chai').assert;
-
 import Snake from '../../../src/app/scripts/model/snake';
 import SnakeBody from '../../../src/app/scripts/model/snake_body';
 import Tile from '../../../src/app/scripts/model/tile';
 
 const GameConfig = require('../../../src/app/scripts/game_config');
+
+const assert = require('chai').assert;
 
 describe('Snake', function() {
   describe('new Snake()', function() {

@@ -1,4 +1,4 @@
-import Random from '../util/random';
+import random from '../util/random';
 import Tile from './tile';
 
 let GameConfig = require('../game_config');
@@ -17,7 +17,6 @@ export default class Apple {
       }
     }
 
-    let randomTile = Random.random(availableTiles);
-    return new Tile(randomTile.x, randomTile.y);
+    return random(availableTiles);
   }
 }
