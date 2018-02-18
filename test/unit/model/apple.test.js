@@ -1,8 +1,7 @@
 import Apple from '../../../src/app/scripts/model/apple';
+import config from '../../../src/app/scripts/core/config';
 import Snake from '../../../src/app/scripts/model/snake';
 import Tile from '../../../src/app/scripts/model/tile';
-
-const GameConfig = require('../../../src/app/scripts/game_config');
 
 const assert = require('chai').assert;
 
@@ -18,14 +17,14 @@ describe('Apple', function() {
       assert.instanceOf(Apple.spawnApple(snake), Tile);
     });
 
-    it('should have x coordinate 0 <= x <= GameConfig.X_TILES', function() {
+    it('should have x coordinate 0 <= x <= config.X_TILES', function() {
       assert.isAtLeast(Apple.spawnApple(snake).x, 0);
-      assert.isAtMost(Apple.spawnApple(snake).x, GameConfig.X_TILES);
+      assert.isAtMost(Apple.spawnApple(snake).x, config.X_TILES);
     });
 
-    it('should have y coordinate 0 <= y <= GameConfig.Y_TILES', function() {
+    it('should have y coordinate 0 <= y <= config.Y_TILES', function() {
       assert.isAtLeast(Apple.spawnApple(snake).y, 0);
-      assert.isAtMost(Apple.spawnApple(snake).y, GameConfig.Y_TILES);
+      assert.isAtMost(Apple.spawnApple(snake).y, config.Y_TILES);
     });
 
     it('should not collide with the snake', function() {

@@ -1,6 +1,5 @@
+import config from '../core/config';
 import Tile from './model/tile';
-
-let GameConfig = require('./game_config');
 
 export default class CanvasHandler {
   constructor(canvasId, game) {
@@ -25,11 +24,11 @@ export default class CanvasHandler {
   recomputeCanvas() {
     this.resizeCanvas();
 
-    this.canvas.width = Math.floor(this.canvas.clientWidth / GameConfig.X_TILES) * GameConfig.X_TILES * 2;
-    this.canvas.height = Math.floor(this.canvas.clientHeight / GameConfig.Y_TILES) * GameConfig.Y_TILES * 2;
+    this.canvas.width = Math.floor(this.canvas.clientWidth / config.X_TILES) * config.X_TILES * 2;
+    this.canvas.height = Math.floor(this.canvas.clientHeight / config.Y_TILES) * config.Y_TILES * 2;
 
-    this.tileWidth = Math.floor(this.canvas.width / GameConfig.X_TILES);
-    this.tileHeight = Math.floor(this.canvas.height / GameConfig.Y_TILES);
+    this.tileWidth = Math.floor(this.canvas.width / config.X_TILES);
+    this.tileHeight = Math.floor(this.canvas.height / config.Y_TILES);
   }
 
   resizeCanvas() {
@@ -52,17 +51,17 @@ export default class CanvasHandler {
     if (this.game.apple != null) this.drawApple(this.game.apple, this.game.paused);
     if (this.game.snake != null) this.drawSnake(this.game.snake);
 
-    window.setTimeout(() => window.requestAnimationFrame(() => this.draw()), 1000 / GameConfig.REFRESH_FPS);
+    window.setTimeout(() => window.requestAnimationFrame(() => this.draw()), 1000 / config.REFRESH_FPS);
   }
 
   drawBackground() {
-    for (let i = 0; i < GameConfig.X_TILES; i++) {
-      for (let j = 0; j < GameConfig.Y_TILES; j++) {
+    for (let i = 0; i < config.X_TILES; i++) {
+      for (let j = 0; j < config.Y_TILES; j++) {
         let tile = new Tile(i, j);
         let color;
 
-        if ((i + j) % 2 == 0) color = GameConfig.BACKGROUND_COLOR_1;
-        else color = GameConfig.BACKGROUND_COLOR_2;
+        if ((i + j) % 2 == 0) color = config.BACKGROUND_COLOR_1;
+        else color = config.BACKGROUND_COLOR_2;
 
         this.gc.fillStyle = color;
         this.drawTile(tile);
@@ -71,7 +70,7 @@ export default class CanvasHandler {
   }
 
   drawSnake(snake) {
-    this.gc.fillStyle = GameConfig.SNAKE_COLOR;
+    this.gc.fillStyle = config.SNAKE_COLOR;
 
     for (let i = 0; i < snake.snake.length; i++) {
       this.drawTile(snake.snake[i]);

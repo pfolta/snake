@@ -1,8 +1,7 @@
+import config from '../../../src/app/scripts/core/config';
 import Snake from '../../../src/app/scripts/model/snake';
 import SnakeBody from '../../../src/app/scripts/model/snake_body';
 import Tile from '../../../src/app/scripts/model/tile';
-
-const GameConfig = require('../../../src/app/scripts/game_config');
 
 const assert = require('chai').assert;
 
@@ -18,8 +17,8 @@ describe('Snake', function() {
       assert.isObject(snake);
     });
 
-    it('should have size GameConfig.INITIAL_SNAKE_SIZE', function() {
-      assert.equal(snake.size(), GameConfig.INITIAL_SNAKE_SIZE);
+    it('should have size config.INITIAL_SNAKE_SIZE', function() {
+      assert.equal(snake.size(), config.INITIAL_SNAKE_SIZE);
     });
   });
 
@@ -162,7 +161,7 @@ describe('Snake', function() {
     });
 
     it('should return true if tile is part of the snake', function() {
-      tile = new Tile(2, Math.floor(GameConfig.Y_TILES / 2));
+      tile = new Tile(2, Math.floor(config.Y_TILES / 2));
       assert.isTrue(snake.collidesWith(tile));
     });
   });
@@ -208,13 +207,13 @@ describe('Snake', function() {
       snake.move(-1, 0);
 
       snake.loopThroughWalls();
-      assert.equal(snake.head().x, GameConfig.X_TILES - 1);
+      assert.equal(snake.head().x, config.X_TILES - 1);
     });
 
     it('should loop through the right wall', function() {
-      // Move snake right to GameConfig.X_TILES
+      // Move snake right to config.X_TILES
       let snakeHeadX = snake.head().x;
-      for (let i = 0; i < (GameConfig.X_TILES - snakeHeadX); i++) {
+      for (let i = 0; i < (config.X_TILES - snakeHeadX); i++) {
         snake.move(1, 0);
       }
 
@@ -236,13 +235,13 @@ describe('Snake', function() {
       snake.move(0, -1);
 
       snake.loopThroughWalls();
-      assert.equal(snake.head().y, GameConfig.Y_TILES - 1);
+      assert.equal(snake.head().y, config.Y_TILES - 1);
     });
 
     it('should loop through the bottom wall', function() {
-      // Move snake down to GameConfig.Y_TILES
+      // Move snake down to config.Y_TILES
       let snakeHeadY = snake.head().x;
-      for (let i = 0; i < (GameConfig.Y_TILES - snakeHeadY); i++) {
+      for (let i = 0; i < (config.Y_TILES - snakeHeadY); i++) {
         snake.move(0, 1);
       }
 

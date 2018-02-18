@@ -1,6 +1,5 @@
+import config from '../core/config';
 import random from '../util/random';
-
-let GameConfig = require('../game_config');
 
 export default class Tile {
   static collides(tileA, tileB) {
@@ -19,7 +18,7 @@ export default class Tile {
   }
 
   randomize() {
-    this.x = random(GameConfig.X_TILES);
-    this.y = random(GameConfig.Y_TILES);
+    this.x = random(config.X_TILES);
+    this.y = random(config.Y_TILES);
   }
 }

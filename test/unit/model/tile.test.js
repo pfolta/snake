@@ -1,5 +1,5 @@
+import config from '../../../src/app/scripts/core/config';
 import Tile from '../../../src/app/scripts/model/tile';
-const GameConfig = require('../../../src/app/scripts/game_config');
 
 const assert = require('chai').assert;
 
@@ -20,14 +20,14 @@ describe('Tile', function() {
       assert.isNumber(tile.y);
     });
 
-    it('should have x coordinate 0 <= x <= GameConfig.X_TILES', function() {
+    it('should have x coordinate 0 <= x <= config.X_TILES', function() {
       assert.isAtLeast(tile.x, 0);
-      assert.isAtMost(tile.x, GameConfig.X_TILES);
+      assert.isAtMost(tile.x, config.X_TILES);
     });
 
-    it('should have y coordinate 0 <= y <= GameConfig.Y_TILES', function() {
+    it('should have y coordinate 0 <= y <= config.Y_TILES', function() {
       assert.isAtLeast(tile.y, 0);
-      assert.isAtMost(tile.y, GameConfig.Y_TILES);
+      assert.isAtMost(tile.y, config.Y_TILES);
     });
   });
 

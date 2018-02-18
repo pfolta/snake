@@ -1,21 +1,20 @@
+import config from '../core/config';
 import SnakeBody from './snake_body';
 import Tile from './tile';
-
-let GameConfig = require('../game_config');
 
 export default class Snake {
   constructor() {
     this.snake = [];
 
     let head = new SnakeBody();
-    head.x = GameConfig.INITIAL_SNAKE_SIZE - 1;
-    head.y = Math.floor(GameConfig.Y_TILES / 2);
+    head.x = config.INITIAL_SNAKE_SIZE - 1;
+    head.y = Math.floor(config.Y_TILES / 2);
     head.dx = 1;
     head.dy = 0;
 
     this.append(head);
 
-    for (let i = 1; i < GameConfig.INITIAL_SNAKE_SIZE; i++) {
+    for (let i = 1; i < config.INITIAL_SNAKE_SIZE; i++) {
       this.append(new SnakeBody(this.head().x - i, this.head().y, this.head().dx, this.head().dy));
     }
   }
@@ -68,17 +67,17 @@ export default class Snake {
   }
 
   loopThroughWalls() {
-    if (this.head().x < 0) this.snake[0].x = GameConfig.X_TILES - 1;
-    if (this.head().x >= GameConfig.X_TILES) this.snake[0].x = 0;
-    if (this.head().y < 0) this.snake[0].y = GameConfig.Y_TILES - 1;
-    if (this.head().y >= GameConfig.Y_TILES) this.snake[0].y = 0;
+    if (this.head().x < 0) this.snake[0].x = config.X_TILES - 1;
+    if (this.head().x >= config.X_TILES) this.snake[0].x = 0;
+    if (this.head().y < 0) this.snake[0].y = config.Y_TILES - 1;
+    if (this.head().y >= config.Y_TILES) this.snake[0].y = 0;
   }
 
   aboutToCollideWithWalls(dx, dy) {
     if (this.head().x + dx < 0) return true;
-    if (this.head().x + dx >= GameConfig.X_TILES) return true;
+    if (this.head().x + dx >= config.X_TILES) return true;
     if (this.head().y + dy < 0) return true;
-    if (this.head().y + dy >= GameConfig.Y_TILES) return true;
+    if (this.head().y + dy >= config.Y_TILES) return true;
 
     return false;
   }

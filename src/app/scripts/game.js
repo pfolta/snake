@@ -1,8 +1,7 @@
 import Apple from './model/apple';
+import config from '../core/config';
 import Snake from './model/snake';
 import Tile from './model/tile';
-
-let GameConfig = require('./game_config');
 
 export default class Game {
   constructor(storageHandler) {
@@ -45,7 +44,7 @@ export default class Game {
 
     if (this.paused) {
       this.paused = false;
-      this.gameInterval = window.setInterval(() => this.game(), 1000 / GameConfig.GAME_SPEED);
+      this.gameInterval = window.setInterval(() => this.game(), 1000 / config.GAME_SPEED);
     }
   }
 
@@ -101,7 +100,7 @@ export default class Game {
   }
 
   game() {
-    if (GameConfig.ENABLE_WALLS && this.snake.aboutToCollideWithWalls(this.dx, this.dy)) return this.endGame();
+    if (config.ENABLE_WALLS && this.snake.aboutToCollideWithWalls(this.dx, this.dy)) return this.endGame();
 
     // Snake eats an apple
     if (Tile.collides(this.snake.head(), this.apple)) {
