@@ -5,8 +5,9 @@
   "author": "Peter Folta",
   "license": "MIT",
   "scripts": {
-    "test": "gulp test",
-    "coveralls": "cat build/reports/coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "cat build/reports/coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "gulp": "gulp",
+    "test": "gulp test"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
