@@ -36,5 +36,8 @@
     "jshint-stylish": "2.2.1",
     "run-sequence": "2.2.1",
     "vinyl-source-stream": "2.0.0"
+  },
+  "resolutions": {
+    "natives": "1.1.3"
   }
 }
